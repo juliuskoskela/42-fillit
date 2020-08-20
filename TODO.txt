@@ -3,19 +3,23 @@
 -=THIS IS TODO DOCUMENTATION FOR FILLIT by Julius and Aleksi=-
 
 
-	-Validate and store input from fd.
+1. Valid input:
+...#
+...#
+..##
+....
 
-	-Read input until empty line.
-          Check that input is 4x4.
-          Check tetrimino shape.
-          Increment tetrimino[x] count.
+2. Move piece to upper left corner:
+...#...#..##....
+.#..|.#..|##..|....
 
-    -If read > 0 repeat previous.
+3. Check piece against 19 examples on file tetriminoes.txt
 
-	-Create smallest possible field (longest side of pieces) and try blocks with smaller
-	sides recursively.
+4. Create board with x/y of smallest tetriminoe.
 
-	-If all blockes failed to fit in any config, increase x, y of field by 1 and go back		to previous step.
-	
-	-Else print output.
+5. Place 1st tetriminoe in upper left corner of the board and try placing the consequetive piece in the nextslot.
+
+6. If the pieces don't fit increase board size 1x1 and go to previous.
+
+7. Print result.
 

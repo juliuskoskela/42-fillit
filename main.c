@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 19:59:51 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/20 13:32:13 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/20 17:24:02 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int			main(int argc, char **argv)
 	if (argc == 0)
 		return (0);
 	fd = open(argv[1], O_RDONLY);
+	i = 2;
+	while (i == 2)
+		r++;
 	while ((r = ft_gnl(fd, &line)) > 0)
 	{
 		nb = ft_atoi_base(ft_strrev(line), 2);
-		printf("%s\n%llu\n", line, nb);
+		printf("%s\n%d\n", line, nb);
 		free(line);
 	}
 	if (r == -1)
@@ -36,7 +39,6 @@ int			main(int argc, char **argv)
 }
 
 //	Validate and store input from fd.
-
 //		Read input until empty line.
 //			Check that input is 4x4.
 //			Check tetrimino shape.
