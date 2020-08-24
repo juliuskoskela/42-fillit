@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 19:59:51 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/21 19:17:42 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/21 23:11:30 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void				printbits(unsigned int nb, int n)
 	}
 }
 
-int			*ft_trunc_input(int *nb, size_t xy)
+int			*ft_normalize_y(int *nb, size_t size)
 {
 	size_t		i;
 	size_t		j;
@@ -53,9 +53,8 @@ int			*ft_trunc_input(int *nb, size_t xy)
 
 	i = 0;
 	j = 0;
-	d = (int *)malloc(sizeof(int) * xy);
-	// Check if empty lines above. If so remove.
-	while (i < xy)
+	d = (int *)malloc(sizeof(int) * size);
+	while (i < size)
 	{
 		if (nb[i] == 0)
 			i++;
@@ -66,7 +65,22 @@ int			*ft_trunc_input(int *nb, size_t xy)
 			j++;
 		}
 	}
+	while(j < size)
+	{
+		d[j] = 0;
+		j++;
+	}
 	return (d);
+}
+
+int			ft_normalize_field(int **nb, size_t size)
+{
+	int			*d;
+	// Check if empty lines above. If so remove.
+	d = ft_normalize_y(*nb, size);
+	*nb = d;
+	free(d);
+	return (1);
 	// Check if empty colums to the right. If so remove.
 }
 
@@ -95,7 +109,7 @@ int			main(int argc, char **argv)
 		}
 	}
 	j = 0;
-	d = ft_trunc_input(nb, xy);
+	ft_normalize_field(&nb, xy);
 	while (j < xy)
 	{
 		printbits(d[j], 4);

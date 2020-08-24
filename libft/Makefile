@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 00:14:29 by jkoskela          #+#    #+#              #
-#    Updated: 2020/08/18 19:40:05 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/08/23 21:09:06 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRC = ft_atoi.c \
 	  ft_lentoc.c \
 	  ft_strcsub.c \
 	  ft_gnl.c \
+	  ft_sqrt.c \
 
 
 OBJ = $(SRC:.c=.o)

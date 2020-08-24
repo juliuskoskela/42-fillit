@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 03:56:32 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/07/06 08:37:55 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/24 12:15:09 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ static double	ft_atof_sub(const char *str, double res)
 
 double			ft_atof(const char *str)
 {
-	int			decimal;
 	double		res;
 	double		negative;
 
-	decimal = 0;
 	negative = 1;
 	res = 0;
 	while (ft_iswspace(*str) == 1)

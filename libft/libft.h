@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 23:09:31 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/19 21:18:27 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/23 21:08:48 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_sizeofint(int n);
 void				*ft_calloc(size_t nmemb, size_t size);
 int					ft_gnl(const int fd, char **line);
+float				ft_sqrt(float x);
 
 #endif
