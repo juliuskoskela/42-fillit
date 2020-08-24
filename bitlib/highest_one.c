@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readbits.c                                         :+:      :+:    :+:   */
+/*   highest_one.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:42:42 by esukava          ###   ########.fr       */
+/*   Created: 2020/08/24 15:13:55 by esukava           #+#    #+#             */
+/*   Updated: 2020/08/24 15:14:39 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-uint			readbits(char *str, char c, int size)
+int				highest_one(uint nb, size_t size)
 {
 	size_t		i;
-	uint		nb;
+	int			r;
 
-	i = 0;
-	nb = 0;
-	while (i < size)
+	i = 31;
+	while (i > 0)
 	{
-		if (str[i] == c)
-			nb |= 1 << i;
-		if (str[i] != '\n')
-			i++;
+		if (((nb >> i) & 1) == 1)
+			return(i);
+		i--;
 	}
-	return (nb);
+	return(0);
 }

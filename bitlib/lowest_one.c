@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readbits.c                                         :+:      :+:    :+:   */
+/*   lowest_one.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:42:42 by esukava          ###   ########.fr       */
+/*   Created: 2020/08/24 15:15:02 by esukava           #+#    #+#             */
+/*   Updated: 2020/08/24 15:21:17 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include "bitlib.c"
 
-uint			readbits(char *str, char c, int size)
+int				lowest_one(uint nb, size_t size)
 {
 	size_t		i;
-	uint		nb;
 
 	i = 0;
-	nb = 0;
-	while (i < size)
+	while (i <= 31)
 	{
-		if (str[i] == c)
-			nb |= 1 << i;
-		if (str[i] != '\n')
-			i++;
+		if (((nb >> i) & 1) == 1)
+			return (i);
+		i++;
 	}
-	return (nb);
+	return (0);
 }

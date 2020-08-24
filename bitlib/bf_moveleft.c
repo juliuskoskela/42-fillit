@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readbits.c                                         :+:      :+:    :+:   */
+/*   bf_moveleft.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:42:42 by esukava          ###   ########.fr       */
+/*   Created: 2020/08/24 15:03:50 by esukava           #+#    #+#             */
+/*   Updated: 2020/08/24 15:05:36 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-uint			readbits(char *str, char c, int size)
+void			bf_moveleft(uint *field, size_t steps, size_t size)
 {
 	size_t		i;
-	uint		nb;
 
 	i = 0;
-	nb = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
-		if (str[i] == c)
-			nb |= 1 << i;
-		if (str[i] != '\n')
-			i++;
+		field[i] = field[i] >> steps;
+		i++;
 	}
-	return (nb);
 }

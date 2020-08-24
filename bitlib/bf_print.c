@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readbits.c                                         :+:      :+:    :+:   */
+/*   bf_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:42:42 by esukava          ###   ########.fr       */
+/*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
+/*   Updated: 2020/08/24 14:57:03 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-uint			readbits(char *str, char c, int size)
+void			bf_print(uint *field, size_t size)
 {
 	size_t		i;
-	uint		nb;
 
 	i = 0;
-	nb = 0;
 	while (i < size)
 	{
-		if (str[i] == c)
-			nb |= 1 << i;
-		if (str[i] != '\n')
-			i++;
+		printbits(field[i], size);
+		write(1, "\n", 1);
+		i++;
 	}
-	return (nb);
 }

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readbits.c                                         :+:      :+:    :+:   */
+/*   printbits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:42:42 by esukava          ###   ########.fr       */
+/*   Created: 2020/08/24 14:44:16 by esukava           #+#    #+#             */
+/*   Updated: 2020/08/24 14:45:00 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-uint			readbits(char *str, char c, int size)
+void			printbits(uint nb, int n)
 {
 	size_t		i;
-	uint		nb;
 
 	i = 0;
-	nb = 0;
-	while (i < size)
+	while (i < n)
 	{
-		if (str[i] == c)
-			nb |= 1 << i;
-		if (str[i] != '\n')
-			i++;
+		ft_putchar(checkbit(nb, i) ? '1' : '0');
+		i++;
 	}
-	return (nb);
 }

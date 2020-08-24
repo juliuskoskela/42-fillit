@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readbits.c                                         :+:      :+:    :+:   */
+/*   bf_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:42:42 by esukava          ###   ########.fr       */
+/*   Created: 2020/08/24 14:46:04 by esukava           #+#    #+#             */
+/*   Updated: 2020/08/24 14:49:41 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-uint			readbits(char *str, char c, int size)
+uint			*bf_init(size_t size)
 {
 	size_t		i;
-	uint		nb;
+	uint		*field;
 
 	i = 0;
-	nb = 0;
-	while (i < size)
-	{
-		if (str[i] == c)
-			nb |= 1 << i;
-		if (str[i] != '\n')
-			i++;
-	}
-	return (nb);
+	field = (uint *)malloc(sizeof(uint) * size);
+	while (i < size - 1)
+		field[i++] = 0;
+	return (field);
 }
