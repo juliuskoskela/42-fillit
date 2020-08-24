@@ -6,20 +6,22 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:44:16 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:45:00 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 16:58:34 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void			printbits(uint nb, int n)
+void			printbits(unsigned int nb, size_t size)
 {
-	size_t		i;
+    size_t        i;
+    char        c;
 
-	i = 0;
-	while (i < n)
-	{
-		ft_putchar(checkbit(nb, i) ? '1' : '0');
-		i++;
-	}
+    i = 0;
+    while (i < (size - 1))
+    {
+        c = checkbit(nb, i) ? '1' : '0';
+        write(1, &c, 1);
+        i++;
+    }
 }

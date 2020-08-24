@@ -6,16 +6,16 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:42:42 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 16:59:00 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-uint			readbits(char *str, char c, int size)
+unsigned int			readbits(char *str, char c, size_t size)
 {
 	size_t		i;
-	uint		nb;
+	unsigned int		nb;
 
 	i = 0;
 	nb = 0;

@@ -6,18 +6,17 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:13:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 15:14:39 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 16:55:06 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-int				highest_one(uint nb, size_t size)
+int				highest_one(unsigned int nb, size_t size)
 {
 	size_t		i;
-	int			r;
 
-	i = 31;
+	i = size - 1;
 	while (i > 0)
 	{
 		if (((nb >> i) & 1) == 1)

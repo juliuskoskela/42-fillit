@@ -6,13 +6,13 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:57:03 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 16:45:56 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void			bf_print(uint *field, size_t size)
+void			bf_print(unsigned int *field, size_t size)
 {
 	size_t		i;
 

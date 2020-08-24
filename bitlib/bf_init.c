@@ -6,19 +6,19 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:46:04 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:49:41 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 16:45:32 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-uint			*bf_init(size_t size)
+unsigned int			*bf_init(size_t size)
 {
 	size_t		i;
-	uint		*field;
+	unsigned int		*field;
 
 	i = 0;
-	field = (uint *)malloc(sizeof(uint) * size);
+	field = (unsigned int *)malloc(sizeof(unsigned int) * size);
 	while (i < size - 1)
 		field[i++] = 0;
 	return (field);

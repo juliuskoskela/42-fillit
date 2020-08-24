@@ -6,13 +6,13 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:03:50 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 15:05:36 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 16:47:39 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void			bf_moveleft(uint *field, size_t steps, size_t size)
+void			bf_moveleft(unsigned int *field, size_t steps, size_t size)
 {
 	size_t		i;
 

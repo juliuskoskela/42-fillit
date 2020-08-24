@@ -6,13 +6,14 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:57:20 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 14:59:00 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 16:54:07 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
+#include "../libft/libft.h"
 
-int				bf_fill(uint *field, char *file, char one, size_t size)
+int				bf_fill(unsigned int *field, char *file, char one, size_t size)
 {
 	char		*line;
 	int			r;
