@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   bf_fill.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:57:20 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:54:07 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:31:25 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 #include "../libft/libft.h"
 
-int				bf_fill(unsigned int *field, char *file, char one, size_t size)
+int				bf_fill(uint64_t *field, char *file, char one, size_t size)
 {
 	char		*line;
 	int			r;
@@ -24,6 +24,8 @@ int				bf_fill(unsigned int *field, char *file, char one, size_t size)
 	i = 0;
 	while ((r = ft_gnl(fd, &line)) > 0)
 	{
+		if (r < 0 || fd < 0 || fd > MAX_FD)
+			return (0);
 		if (line[0])
 		{
 			field[i] = readbits(line, one, size);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   highest_one.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:13:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:55:06 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:32:34 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-int				highest_one(unsigned int nb, size_t size)
+size_t			highest_one(uint64_t nb, size_t size)
 {
 	size_t		i;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bf_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:45:56 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:17:47 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void			bf_print(unsigned int *field, size_t size)
+void			bf_print(uint64_t *field, size_t size)
 {
 	size_t		i;
 

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   readbits.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:42:11 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:59:00 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:29:23 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-unsigned int			readbits(char *str, char c, size_t size)
+uint64_t		readbits(char *str, char c, size_t size)
 {
 	size_t		i;
-	unsigned int		nb;
+	uint64_t	nb;
 
 	i = 0;
 	nb = 0;

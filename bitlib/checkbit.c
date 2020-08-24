@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   checkbit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:41:22 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:43:44 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:18:21 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-unsigned int			checkbit(unsigned int nb, int n)
+uint64_t			checkbit(uint64_t nb, int n)
 {
 	return ((nb >> n) & 1);
 }

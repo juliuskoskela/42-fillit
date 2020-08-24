@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bf_ynormal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:59:36 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:46:58 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:18:10 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void			bf_ynormal(unsigned int *field, size_t size)
+void			bf_ynormal(uint64_t *field, size_t size)
 {
 	size_t		i;
 

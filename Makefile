@@ -1,13 +1,10 @@
-LIBNAME = libft/libft.a
+LIBFT = libft/libft.a
+
+BITLIB = bitlib/bitlib.a
 
 NAME = fillit
 
-SRCS = 		srcs/ft_solver.c\
-			srcs/ft_printing.c\
-			srcs/ft_listmaker.c\
-			srcs/ft_is_valid.c\
-			srcs/ft_strmaker.c\
-			srcs/main.c\
+SRCS = fillit.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -15,7 +12,7 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-clean: 
+clean:
 	make -C libft clean
 	rm -f $(OBJS)
 
@@ -27,4 +24,4 @@ re: fclean all
 
 $(NAME): $(OBJS)
 	make -C libft
-	gcc -Wall -Wextra -Werror $(SRCS) $(LIBNAME) -o $(NAME)
+	gcc -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) -o $(NAME)

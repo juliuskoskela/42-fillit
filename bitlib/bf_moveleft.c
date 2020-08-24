@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bf_moveleft.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:03:50 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:47:39 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:17:28 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void			bf_moveleft(unsigned int *field, size_t steps, size_t size)
+void			bf_moveleft(uint64_t *field, size_t steps, size_t size)
 {
 	size_t		i;
 

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   bf_column.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:02:24 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 16:51:45 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/24 20:31:50 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-unsigned int			bf_column(unsigned int *field, size_t col, size_t size)
+uint64_t			bf_column(uint64_t *field, size_t col, size_t size)
 {
-	unsigned int		d;
+	uint64_t		d;
 	size_t		i;
 
 	i = 0;
