@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 20:28:45 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/24 23:42:14 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/25 00:11:22 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ int			main(void)
 {
 	int		x = 8;
 	printbits(x, 4);
-	printf("\n%d", (int)highest_one(x, 4));
 	return (0);
 }
