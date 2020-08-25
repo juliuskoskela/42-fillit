@@ -6,7 +6,7 @@
 #    By: esukava <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/24 16:24:31 by esukava           #+#    #+#              #
-#    Updated: 2020/08/24 16:29:56 by esukava          ###   ########.fr        #
+#    Updated: 2020/08/25 19:19:43 by esukava          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRC = bf_column.c \
 		lowest_one.c \
 		printbits.c \
 		readbits.c \
+		solver.c \
+		b.c \
 
 OBJ = $(SRC:.c=.o)
 
