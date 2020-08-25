@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esukava <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/24 16:24:31 by esukava           #+#    #+#              #
-#    Updated: 2020/08/24 16:29:56 by esukava          ###   ########.fr        #
+#    Updated: 2020/08/25 13:17:32 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = bf_column.c \
 		lowest_one.c \
 		printbits.c \
 		readbits.c \
+		b.c \
 
 OBJ = $(SRC:.c=.o)
 

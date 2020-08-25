@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:34:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 20:32:19 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/25 13:16:52 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdint.h>
 
+uint64_t		b(char *str);
 uint64_t		readbits(char *str, char c, size_t size);
 uint64_t		checkbit(uint64_t nb, int n);
 void			printbits(uint64_t nb, size_t size);
