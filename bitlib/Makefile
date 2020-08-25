@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esukava <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/24 16:24:31 by esukava           #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2020/08/25 19:19:43 by esukava          ###   ########.fr        #
+=======
+#    Updated: 2020/08/25 13:17:32 by jkoskela         ###   ########.fr        #
+>>>>>>> 46c14b5f186929cf409bc22b55c1815f0fba45bf
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +32,10 @@ SRC = bf_column.c \
 		lowest_one.c \
 		printbits.c \
 		readbits.c \
+<<<<<<< HEAD
 		solver.c \
+=======
+>>>>>>> 46c14b5f186929cf409bc22b55c1815f0fba45bf
 		b.c \
 
 OBJ = $(SRC:.c=.o)
