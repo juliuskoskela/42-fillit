@@ -24,4 +24,5 @@ re: fclean all
 
 $(NAME): $(OBJS)
 	make -C libft
+	make -C bitlib
 	gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) -o $(NAME)

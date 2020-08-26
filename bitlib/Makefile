@@ -14,6 +14,8 @@ FLAG = -Wall -Wextra -Werror
 
 NAME = bitlib.a
 
+LIBFT = ../libft/libft.a
+
 SRC = bf_column.c \
 	  	bf_fill.c \
 		bf_init.c \
@@ -40,8 +42,9 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 	@echo "$(NAME) indexed"
 
+
 %.o: %.c
-	@gcc $(FLAG) -c $< -o $@
+	@gcc $(FLAG) -c $< $(LIBFT) -o $@
 
 clean:
 	@rm -f $(OBJ)

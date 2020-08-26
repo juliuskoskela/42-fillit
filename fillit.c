@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 12:44:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/26 22:42:36 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/27 01:14:28 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ typedef struct		s_field
 
 int		checkrows(t_field *field, t_field *block, int i, int j, int n)
 {
-	if (j == field->w - block->w)
-		return(0);
 	if ((block->row[0] & field->row[n]) != 0)
 	{
+		if (j == field->w - block->w)
+			return(0);
 		block->row[0] = block->row[0] << 1;
 		checkrows(field, block, i, j + 1, n);
 	}
-	if (i < block->h)
+	while (i < block->h - 1)
 	{
 		field->row[n] = field->row[n] | block->row[0];
 		block->row[i] = block->row[i] << j;
@@ -38,7 +38,7 @@ int		checkrows(t_field *field, t_field *block, int i, int j, int n)
 		else
 		{
 			field->row[n + i] = field->row[n + i] | block->row[i];
-			checkrows(field, block, i + 1, j, n);
+			i++;
 		}
 	}
 	return (1);
@@ -51,6 +51,10 @@ int		solver_d1(t_field *field, t_field **block, int i, int n, int block_count)
 
 	r = 0;
 	tmp = block[0][i];
+	tmp.w = block[0][i].w;
+	tmp.h = block[0][i].h;
+	if (i == block_count - 1)
+			return (0);
 	if (n < field->h - block[0][i].h - 1)
 	{
 		r = checkrows(field, &block[0][i], 0, 0, n);
@@ -59,11 +63,11 @@ int		solver_d1(t_field *field, t_field **block, int i, int n, int block_count)
 		else
 		{
 			block[0][i] = tmp;
+			block[0][i].w = tmp.w;
+			block[0][i].h = tmp.h;
 			solver_d1(field, block, i, n + 1, block_count);
 		}
 	}
-	if (r == 0 && i == block_count)
-		return (0);
 	return (1);
 }
 
@@ -95,19 +99,19 @@ int			main(void)
 					blocks[0].row[1] = b("110");
 					blocks[0].h = 2;
 					blocks[0].w = 3;
-				blocks[1].row = (uint64_t *)malloc(sizeof(uint64_t) * 5);
-					blocks[1].row[0] = b("11");
-					blocks[1].row[1] = b("10");
-					blocks[1].row[2] = b("10");
-					blocks[1].h = 3;
-					blocks[1].w = 2;
-				blocks[2].row = (uint64_t *)malloc(sizeof(uint64_t) * 6);
-					blocks[2].row[0] = b("1");
-					blocks[2].row[1] = b("1");
-					blocks[2].row[2] = b("1");
-					blocks[2].row[3] = b("1");
-					blocks[2].h = 4;
-					blocks[2].w = 1;
+				//	blocks[1].row = (uint64_t *)malloc(sizeof(uint64_t) * 5);
+				// 	blocks[1].row[0] = b("11");
+				// 	blocks[1].row[1] = b("01");
+				// 	blocks[1].row[2] = b("01");
+				// 	blocks[1].h = 3;
+				// 	blocks[1].w = 2;
+				// blocks[2].row = (uint64_t *)malloc(sizeof(uint64_t) * 6);
+				// 	blocks[2].row[0] = b("1");
+				// 	blocks[2].row[1] = b("1");
+				// 	blocks[2].row[2] = b("1");
+				// 	blocks[2].row[3] = b("1");
+				// 	blocks[2].h = 4;
+				// 	blocks[2].w = 1;
 
 	t_field		field;
 
