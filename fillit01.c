@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 12:44:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/26 22:42:36 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/26 21:34:03 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,15 @@ int		checkrows(t_field *field, t_field *block, int i, int j, int n)
 int		solver_d1(t_field *field, t_field **block, int i, int n, int block_count)
 {
 	int		r;
-	t_field tmp;
 
 	r = 0;
-	tmp = block[0][i];
 	if (n < field->h - block[0][i].h - 1)
 	{
 		r = checkrows(field, &block[0][i], 0, 0, n);
 		if (r == 1)
 			solver_d1(field, block, i + 1, 0, block_count);
 		else
-		{
-			block[0][i] = tmp;
 			solver_d1(field, block, i, n + 1, block_count);
-		}
 	}
 	if (r == 0 && i == block_count)
 		return (0);
