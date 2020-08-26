@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 20:28:45 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/25 16:32:44 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/08/25 17:28:07 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/08/25 18:01:04 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,42 @@
 
 int			main(void)
 {
-	uint64_t		*field;
-	uint64_t		t;
+	size_t n = 0;
+	size_t i = 0;
+	uint64_t			*field = bf_init(8);
 
-	field = bf_init(8);
-	field[0] = b("11110000");
-	field[1] = b("00000000");
-	field[2] = b("00000000");
-	field[3] = b("00000000");
-	field[4] = b("00000000");
-	field[5] = b("00000000");
-	field[6] = b("00000000");
-	field[7] = b("00000000");
+							field[0] = b("11111110");
+							field[1] = b("10000000");
+							field[2] = b("00000000");
+							field[3] = b("00000000");
+							field[4] = b("00000000");
+							field[5] = b("00000000");
+							field[6] = b("00000000");
+							field[7] = b("00000000");
 
-	t = b("1110");
-	while ((t & field[0]) > 0)
-		t = t << 1;
-	field[0] = t | field[0];
+	uint64_t			*piece = bf_init(2);
+
+							piece[0] = b("11");
+							piece[1] = b("11");
+
+	while ((field[n] & piece[0]) > 0)
+	{
+		if (i == 6)
+		{
+			piece[0] = b("011");
+			piece[1] = b("110");
+			n++;
+			i = 0;
+		}
+		else
+		{
+			piece[0] = piece[0] << 1;
+			piece[1] = piece[1] << 1;
+			i++;
+		}
+	}
+	field[n] = field[n] | piece[0];
+	field[n + 1] = field[n + 1] | piece[1];
 	bf_print(field, 8);
 	return (0);
 }
