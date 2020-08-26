@@ -3,35 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   b.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 19:17:32 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/25 19:18:24 by esukava          ###   ########.fr       */
-=======
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 13:16:05 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/25 15:38:14 by jkoskela         ###   ########.fr       */
->>>>>>> 46c14b5f186929cf409bc22b55c1815f0fba45bf
+/*   Created: 2020/08/25 19:17:32 by esukava           #+#    #+#             */
+/*   Updated: 2020/08/26 12:54:41 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
-<<<<<<< HEAD
 #include "../libft/libft.h"
-=======
-
-static size_t	ft_strlen(const char *s)
-{
-	size_t i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
->>>>>>> 46c14b5f186929cf409bc22b55c1815f0fba45bf
 
 uint64_t		b(char *str)
 {

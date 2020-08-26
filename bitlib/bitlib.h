@@ -6,11 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:34:55 by esukava           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/08/25 19:56:40 by esukava          ###   ########.fr       */
-=======
-/*   Updated: 2020/08/25 13:16:52 by jkoskela         ###   ########.fr       */
->>>>>>> 46c14b5f186929cf409bc22b55c1815f0fba45bf
+/*   Updated: 2020/08/26 12:55:48 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +18,6 @@
 # include <stdint.h>
 
 uint64_t		b(char *str);
-<<<<<<< HEAD
-uint64_t		solver(uint64_t *field, uint64_t *piece);
-=======
->>>>>>> 46c14b5f186929cf409bc22b55c1815f0fba45bf
 uint64_t		readbits(char *str, char c, size_t size);
 uint64_t		checkbit(uint64_t nb, int n);
 void			printbits(uint64_t nb, size_t size);
