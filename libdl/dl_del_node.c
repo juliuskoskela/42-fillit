@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bf_print.c                                         :+:      :+:    :+:   */
+/*   dl_del_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 02:15:14 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/08/28 15:05:22 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/08/28 15:05:33 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include "libdl.h"
 
-void			bf_print(uint64_t *field, size_t w, size_t h)
+void		dl_del_node(t_dlist **ref, t_dlist *del)
 {
-	size_t		i;
-
-	i = 0;
-	while (i < h)
-	{
-		printbits(field[i], w);
-		write(1, "\n", 1);
-		i++;
-	}
+	if (*ref == NULL || del == NULL)
+		return ;
+	if (*ref == del)
+		*ref = del->next;
+	if (del->next != NULL)
+		del->next->prev = del->prev;
+	if (del->prev != NULL)
+		del->prev->next = del->next;
+	free(del);
 }

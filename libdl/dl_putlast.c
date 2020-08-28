@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bf_print.c                                         :+:      :+:    :+:   */
+/*   dl_putlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 02:15:14 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/08/28 15:00:35 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/08/28 15:00:53 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include "libdl.h"
 
-void			bf_print(uint64_t *field, size_t w, size_t h)
+void		dl_putlast(t_dlist **ref, t_field *new)
 {
-	size_t		i;
+	t_dlist	*temp;
+	t_dlist	*ptr;
 
-	i = 0;
-	while (i < h)
+	ptr = NULL;
+	temp = (t_dlist *)malloc(sizeof(t_dlist));
+	temp->content = new;
+	temp->prev = NULL;
+	temp->next = NULL;
+	if (*ref == NULL)
+		(*ref) = temp;
+	else
 	{
-		printbits(field[i], w);
-		write(1, "\n", 1);
-		i++;
+		ptr = (*ref);
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		temp->prev = ptr;
+		ptr->next = temp;
 	}
 }

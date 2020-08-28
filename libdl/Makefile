@@ -6,29 +6,22 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 12:48:50 by jkoskela          #+#    #+#              #
-#    Updated: 2020/08/27 01:32:00 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/08/28 15:19:22 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAG = -Wall -Wextra -Werror
 
-NAME = bitlib.a
+NAME = libdl.a
 
-SRC = bf_column.c \
-	  	bf_fill.c \
-		bf_init.c \
-		bf_init.c \
-		bf_moveleft.c \
-		bf_normalize.c \
-		bf_print.c \
-		bf_xnormal.c \
-		bf_ynormal.c \
-		checkbit.c \
-		highest_one.c \
-		lowest_one.c \
-		printbits.c \
-		readbits.c \
-		b.c \
+SRC = dl_len.c \
+		dl_putfirst.c \
+		dl_putlast.c \
+		dl_putbefore.c \
+		dl_putafter.c \
+		dl_print.c \
+		dl_del_node.c \
+		dl_del_node_at.c \
 
 OBJ = $(SRC:.c=.o)
 

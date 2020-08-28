@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bf_print.c                                         :+:      :+:    :+:   */
+/*   dl_putafter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 02:15:14 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/08/28 15:01:40 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/08/28 15:02:34 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include "libdl.h"
 
-void			bf_print(uint64_t *field, size_t w, size_t h)
+void		dl_putafter(t_dlist **ref, t_dlist *prev, t_field *new)
 {
-	size_t		i;
+	t_dlist	*new_node;
 
-	i = 0;
-	while (i < h)
-	{
-		printbits(field[i], w);
-		write(1, "\n", 1);
-		i++;
-	}
+	if (prev == NULL)
+		return ;
+	new_node = (t_dlist *)malloc(sizeof(t_dlist));
+	new_node->content = new;
+	new_node->next = prev->next;
+	prev->next = new_node;
+	new_node->prev = prev;
+	if (new_node->next != NULL)
+		new_node->next->prev = new_node;
+	else
+		(*ref) = new_node;
 }

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bf_print.c                                         :+:      :+:    :+:   */
+/*   dl_putfirst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 02:15:14 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/08/28 15:00:00 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/08/28 15:00:20 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include "libdl.h"
 
-void			bf_print(uint64_t *field, size_t w, size_t h)
+void		dl_putfirst(t_dlist **ref, t_field *new)
 {
-	size_t		i;
+	t_dlist		*new_node;
 
-	i = 0;
-	while (i < h)
-	{
-		printbits(field[i], w);
-		write(1, "\n", 1);
-		i++;
-	}
+	new_node = (t_dlist *)malloc(sizeof(t_dlist));
+	new_node->content = new;
+	new_node->next = (*ref);
+	new_node->prev = NULL;
+	if ((*ref) != NULL)
+		(*ref)->prev = new_node;
+	(*ref) = new_node;
 }

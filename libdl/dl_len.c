@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bf_print.c                                         :+:      :+:    :+:   */
+/*   dl_len.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 02:15:14 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/08/28 14:59:00 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/08/28 14:59:37 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include "libdl.h"
 
-void			bf_print(uint64_t *field, size_t w, size_t h)
+size_t		dl_len(t_dlist *node)
 {
-	size_t		i;
+	t_dlist		*tmp;
+	size_t		count;
 
-	i = 0;
-	while (i < h)
+	tmp = node;
+	count = 0;
+	while (tmp != NULL)
 	{
-		printbits(field[i], w);
-		write(1, "\n", 1);
-		i++;
+		count++;
+		tmp = tmp->next;
 	}
+	return (count);
 }
