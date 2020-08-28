@@ -6,7 +6,7 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 14:07:24 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 14:07:30 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/28 15:27:36 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int			isproperline(char *line)
 int			isvalid(char *file)
 {
 	char			*line;
-	int				r;
+	size_t			r;
 	int				fd;
-	int				i;
+	size_t			i;
 
 	i = 1;
 	fd = open(file, O_RDONLY);
