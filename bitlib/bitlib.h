@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:34:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 02:16:09 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:08:14 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdint.h>
+
+typedef struct		s_field
+{
+	uint64_t		*row;
+	size_t			w;
+	size_t			h;
+}					t_field;
 
 uint64_t		b(char *str);
 uint64_t		readbits(char *str, char c, size_t size);
@@ -31,5 +38,6 @@ void			bf_xnormal(uint64_t *field, size_t size);
 void			bf_normalize(uint64_t *field, size_t size);
 size_t			highest_one(uint64_t nb, size_t size);
 size_t			lowest_one(uint64_t nb, size_t size);
+int				bf_cmp(t_field *f1, t_field *f2);
 
 #endif

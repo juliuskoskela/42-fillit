@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 02:46:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/29 00:25:46 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:07:55 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 # include <fcntl.h>
 # include <stdint.h>
 # include "../bitlib/bitlib.h"
-
-typedef struct		s_field
-{
-	uint64_t		*row;
-	size_t			w;
-	size_t			h;
-}					t_field;
 
 typedef struct		s_dlist
 {
