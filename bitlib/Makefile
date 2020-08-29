@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 12:48:50 by jkoskela          #+#    #+#              #
-#    Updated: 2020/08/29 17:08:28 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/08/29 18:34:45 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC = bf_column.c \
 		readbits.c \
 		b.c \
 		bf_cmp.c \
+		bf_new.c \
 
 OBJ = $(SRC:.c=.o)
 

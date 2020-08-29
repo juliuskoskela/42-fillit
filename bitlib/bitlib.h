@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:34:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/29 17:08:14 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 18:40:44 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void			bf_normalize(uint64_t *field, size_t size);
 size_t			highest_one(uint64_t nb, size_t size);
 size_t			lowest_one(uint64_t nb, size_t size);
 int				bf_cmp(t_field *f1, t_field *f2);
+t_field			*bf_new(size_t w, size_t h);
 
 #endif

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isvalid.c                                          :+:      :+:    :+:   */
+/*   val_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 14:07:24 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/28 15:27:36 by esukava          ###   ########.fr       */
+/*   Updated: 2020/08/29 21:10:17 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-/*
-	isvalid takes a .txt file as input. If it is a proper tetrimino field, 
-	the program return 1. Otherwise the program returns 0.
-*/
-int			isproperline(char *line)
+#include "fillit.h"
+
+static int		val_line(char *line)
 {
 	static int		row;
 	size_t			i;
@@ -37,27 +34,26 @@ int			isproperline(char *line)
 		row++;
 		return (1);
 	}
-	row++;
 	return (0);
 }
 
-int			isvalid(char *file)
+int			val_input(char *file)
 {
 	char			*line;
 	size_t			r;
 	int				fd;
 	size_t			i;
 
-	i = 1;
+	i = 0;
 	fd = open(file, O_RDONLY);
 	while ((r = ft_gnl(fd, &line)) > 0)
 	{
-		if (isproperline(line) == 0)
+		if (val_line(line) == 0)
 			return (0);
 		i++;
 	}
 	if (i % 5 == 0)
 		return (1);
+	close(fd);
 	return (0);
 }
-
