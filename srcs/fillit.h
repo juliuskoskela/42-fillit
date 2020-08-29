@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 02:46:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/29 18:52:44 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/30 00:38:09 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct		s_program
 	t_dlist			*INPUT;
 	t_field			*BOARD;
 	size_t			BLOCK_COUNT;
-	int				ERROR;
 }					t_program;
 
 t_dlist			*read_input(char *file, char one);

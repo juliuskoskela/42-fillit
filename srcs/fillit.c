@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -16,7 +17,6 @@ int		main(int argc, char **argv)
 {
 	t_program	*PROGRAM = (t_program *)malloc(sizeof(t_program));
 
-	PROGRAM->ERROR = 0;
 	PROGRAM->FILE = ft_strdup(argv[1]);
 	PROGRAM->ONE = '#';
 	PROGRAM->BOARD = bf_new(2, 2);

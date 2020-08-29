@@ -15,22 +15,33 @@ DEBUG = $(NAME).dSYM
 all: $(NAME)
 
 clean:
-	make -C libft clean
-	make -C libdl clean
-	make -C bitlib clean
-	rm -f $(OBJS)
+	@make -C libft clean
+	@make -C libdl clean
+	@make -C bitlib clean
+	@rm -f $(OBJS)
+	@echo "Deleted all .o files!"
 
-fclean: clean
-	make -C libft fclean
-	make -C libdl fclean
-	make -C bitlib fclean
-	rm -f $(NAME)
-	rm -r $(DEBUG)
+fclean:
+	@make -C libft fclean
+	@make -C libdl fclean
+	@make -C bitlib fclean
+	@rm -f $(OBJS)
+	@rm -f $(NAME)
+	@echo "Deleted all .o files!"
+ifneq (,$(wildcard .DS_Store))
+	@rm -r .DS_Store
+	@echo "Deleted .DS_Store in $(NAME)"
+endif
+ifneq (,$(wildcard $(NAME).dSYM))
+	@rm -r $(DEBUG)
+	@echo "Deleted $(NAME).dSYM in $(NAME)"
+endif
 
 re: fclean all
 
 $(NAME): $(OBJS)
-	make -C libft
-	make -C libdl
-	make -C bitlib
-	gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
+	@make -C libft
+	@make -C libdl
+	@make -C bitlib
+	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
+	@echo "Compilation of $(NAME) successful!"

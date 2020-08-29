@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 12:48:50 by jkoskela          #+#    #+#              #
-#    Updated: 2020/08/29 17:48:18 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/08/30 01:39:22 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "$(NAME) created"
 	@ranlib $(NAME)
-	@echo "$(NAME) indexed"
+	@echo "$(NAME) created!"
 
 
 %.o: %.c
@@ -40,11 +39,16 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
-	@echo "OBJ deleted"
+	@echo "$(NAME) cleaned!"
 
-fclean: clean
+fclean:
 	@rm -f $(NAME)
-	@echo "$(NAME) deleted"
+	@rm -f $(OBJ)
+	@echo "$(NAME) fcleaned!"
+ifneq (,$(wildcard .DS_Store))
+	rm -r .DS_Store
+	@echo "Deleted .DS_Store in $(NAME)"
+endif
 
 re: fclean all
 

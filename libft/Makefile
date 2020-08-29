@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 00:14:29 by jkoskela          #+#    #+#              #
-#    Updated: 2020/08/23 21:09:06 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/08/30 01:40:18 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRC = ft_atoi.c \
 	  ft_strcsub.c \
 	  ft_gnl.c \
 	  ft_sqrt.c \
+	  ERROR.c \
 
 
 OBJ = $(SRC:.c=.o)
@@ -96,20 +97,24 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "$(NAME) created"
 	@ranlib $(NAME)
-	@echo "$(NAME) indexed"
+	@echo "$(NAME) created!"
 
 %.o: %.c
 	@gcc $(FLAG) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
-	@echo "OBJ deleted"
+	@echo "$(NAME) cleaned!"
 
-fclean: clean
+fclean:
+	@rm -f $(OBJ)
 	@rm -f $(NAME)
-	@echo "$(NAME) deleted"
+	@echo "$(NAME) fcleaned!"
+ifneq (,$(wildcard .DS_Store))
+	rm -r .DS_Store
+	@echo "Deleted .DS_Store in $(NAME)"
+endif
 
 re: fclean all
 
