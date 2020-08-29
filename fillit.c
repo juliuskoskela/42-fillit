@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/29 17:25:40 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 18:01:07 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_dlist			*read_input(char *file, char one)
 		}
 	}
 	close(fd);
+	dl_del_last(&head);
 	return (head);
 }
 
@@ -103,16 +104,18 @@ int		main(int argc, char **argv)
 	PROGRAM->ERROR = 0;
 	PROGRAM->FILE = ft_strdup(argv[1]);
 	PROGRAM->ONE = '#';
-	PROGRAM->BLOCKS_REF = read_input("tetrominoes.txt", PROGRAM->ONE);
 	PROGRAM->BOARD = newblock(2, 2);
+	PROGRAM->BLOCKS_REF = read_input("txt/tetrominoes.txt", PROGRAM->ONE);
 	PROGRAM->INPUT = read_input(PROGRAM->FILE, PROGRAM->ONE);
-	PROGRAM->BLOCK_COUNT = 0;
+	PROGRAM->BLOCK_COUNT = dl_len(PROGRAM->INPUT);
 
 	if (!(val_blocks(PROGRAM->INPUT, PROGRAM->BLOCKS_REF)))
 	{
-		printf("LOL");
+		printf("Blocks are not valid.\n");
 		return (0);
 	}
+	printf("%d\n", (int)PROGRAM->BLOCK_COUNT);
+	dl_print(PROGRAM->INPUT);
 	argc = 0;
 	return (0);
 }

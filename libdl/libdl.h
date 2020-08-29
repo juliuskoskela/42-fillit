@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 02:46:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/29 17:07:55 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:48:31 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void		dl_print(t_dlist *node);
 void		dl_print_b(t_dlist *node);
 void		dl_del_node(t_dlist **ref, t_dlist *del);
 void		dl_del_node_at(t_dlist **ref, size_t pos);
+void		dl_del_last(t_dlist **ref);
 
 #endif
