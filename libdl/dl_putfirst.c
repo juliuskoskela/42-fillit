@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 15:00:00 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/28 15:00:20 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 00:27:27 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdl.h"
 
-void		dl_putfirst(t_dlist **ref, t_field *new)
+void		dl_putfirst(t_dlist **ref, void *new)
 {
 	t_dlist		*new_node;
 

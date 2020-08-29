@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 15:00:35 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/28 15:00:53 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 00:27:34 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdl.h"
 
-void		dl_putlast(t_dlist **ref, t_field *new)
+void		dl_putlast(t_dlist **ref, void *new)
 {
 	t_dlist	*temp;
 	t_dlist	*ptr;

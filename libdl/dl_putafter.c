@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 15:01:40 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/28 15:02:34 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 00:27:12 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdl.h"
 
-void		dl_putafter(t_dlist **ref, t_dlist *prev, t_field *new)
+void		dl_putafter(t_dlist **ref, t_dlist *prev, void *new)
 {
 	t_dlist	*new_node;
 
