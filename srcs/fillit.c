@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/29 18:01:07 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/29 18:10:04 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib/bitlib.h"
-#include "libft/libft.h"
-#include "libdl/libdl.h"
+#include "../bitlib/bitlib.h"
+#include "../libft/libft.h"
+#include "../libdl/libdl.h"
 
 typedef struct		s_program
 {

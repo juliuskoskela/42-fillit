@@ -2,7 +2,7 @@ LIBFT = libft/libft.a
 LIBDL = libdl/libdl.a
 BITLIB = bitlib/bitlib.a
 NAME = fillit
-SRCS = fillit.c
+SRCS = srcs/fillit.c
 OBJS = $(SRCS:.c=.o)
 DEBUG = $(NAME).dSYM
 
