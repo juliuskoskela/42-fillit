@@ -24,6 +24,8 @@ int		main(int argc, char **argv)
 	PROGRAM->INPUT = read_input(PROGRAM->FILE, PROGRAM->ONE);
 	PROGRAM->BLOCK_COUNT = dl_len(PROGRAM->INPUT);
 
+	system("leaks fillit"); /* this line was added to detect leaks */
+
 	printf("Sul on %d palikkaa.\n", (int)PROGRAM->BLOCK_COUNT);
 	if (!(val_input(PROGRAM->FILE)))
 	{
@@ -34,6 +36,7 @@ int		main(int argc, char **argv)
 		printf("Sun inputit on tikis!.\n");
 	if (!(val_blocks(PROGRAM->INPUT, PROGRAM->BLOCKS_REF)))
 	{
+
 		printf("Ei nää oo tetrispalikoit, urpo!\n");
 		return (0);
 	}

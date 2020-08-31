@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:22:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/30 01:50:13 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/08/31 16:13:47 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_dlist			*read_input(char *file, char one)
 			i = 0;
 			block = bf_new(4, 4);
 			dl_putlast(&head, block);
+			free(line); /* This line was added to reduce leaks*/
 		}
 		else
 		{
