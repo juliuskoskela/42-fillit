@@ -39,9 +39,20 @@ endif
 
 re: fclean all
 
-$(NAME): $(OBJS)
+d:
 	@make -C libft
 	@make -C libdl
 	@make -C bitlib
 	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
+	@echo "Lldb debug folder"
 	@echo "Compilation of $(NAME) successful!"
+
+$(NAME): $(OBJS)
+	@make -C libft
+	@make -C libdl
+	@make -C bitlib
+	@gcc -Wall -Wextra -Werror $^ $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
+	@echo "Compilation of $(NAME) successful!"
+
+%.o: %.c
+	@gcc -c -Wall -Wextra -Werror -o $@ $<
