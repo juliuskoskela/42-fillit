@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/29 21:14:51 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/01 17:26:18 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +23,16 @@ int		main(int argc, char **argv)
 	PROGRAM->INPUT = read_input(PROGRAM->FILE, PROGRAM->ONE);
 	PROGRAM->BLOCK_COUNT = dl_len(PROGRAM->INPUT);
 
-	system("leaks fillit"); /* this line was added to detect leaks */
-
+	if (argc != 1)
+		ERROR("Argumentit kyrvällään...\n");
 	printf("Sul on %d palikkaa.\n", (int)PROGRAM->BLOCK_COUNT);
 	if (!(val_input(PROGRAM->FILE)))
-	{
-		printf("Sun inputti on ihan vituillaan!\n");
-		return (0);
-	}
+		ERROR("Sun inputti on ihan vituillaan!\n");
 	else
 		printf("Sun inputit on tikis!.\n");
 	if (!(val_blocks(PROGRAM->INPUT, PROGRAM->BLOCKS_REF)))
-	{
-
-		printf("Ei nää oo tetrispalikoit, urpo!\n");
-		return (0);
-	}
+		ERROR("Ei nää oo tetrispalikoit, urpo!\n");
 	else
 		printf("... ja palikatki mintis!\n");
-	argc = 0;
 	return (0);
 }
