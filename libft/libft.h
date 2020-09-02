@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 23:09:31 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/30 01:12:32 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:01:14 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int					ft_sizeofint(int n);
 void				*ft_calloc(size_t nmemb, size_t size);
 int					ft_gnl(const int fd, char **line);
 float				ft_sqrt(float x);
+int					ft_log2_64(uint64_t value);
 void				ERROR(char *message);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/01 17:26:18 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:30:53 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int argc, char **argv)
 	PROGRAM->INPUT = read_input(PROGRAM->FILE, PROGRAM->ONE);
 	PROGRAM->BLOCK_COUNT = dl_len(PROGRAM->INPUT);
 
-	if (argc != 1)
+	if (argc != 2)
 		ERROR("Argumentit kyrvällään...\n");
 	printf("Sul on %d palikkaa.\n", (int)PROGRAM->BLOCK_COUNT);
 	if (!(val_input(PROGRAM->FILE)))

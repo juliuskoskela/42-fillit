@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 00:14:29 by jkoskela          #+#    #+#              #
-#    Updated: 2020/08/30 01:40:18 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/09/02 17:01:33 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRC = ft_atoi.c \
 	  ft_strcsub.c \
 	  ft_gnl.c \
 	  ft_sqrt.c \
+	  ft_log2_64.c \
 	  ERROR.c \
 
 

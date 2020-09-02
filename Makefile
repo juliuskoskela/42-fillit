@@ -45,7 +45,7 @@ d:
 	@make -C bitlib
 	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
 	@echo "Lldb debug folder"
-	@echo "Compilation of $(NAME) successful!"
+	@echo "Compilation of $(NAME) successfu
 
 $(NAME): $(OBJS)
 	@make -C libft
