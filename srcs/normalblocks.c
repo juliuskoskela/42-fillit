@@ -6,7 +6,7 @@
 /*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 18:15:47 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/02 19:04:46 by esukava          ###   ########.fr       */
+/*   Updated: 2020/09/03 17:45:00 by esukava          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,25 @@
 #include "../bitlib/bitlib.h"
 #include "../libdl/libdl.h"
 
-int			checklefties(uint64_t *row)
+static void	setuppies(t_field *tmp)
+{
+	uint64_t	x;
+	size_t		i;
+
+	x = 0;
+	i = 0;
+	while (tmp->row[0] == 0 && i++ <= 4)
+	{
+		x = tmp->row[0];
+		tmp->row[0] = tmp->row[1];
+		tmp->row[1] = tmp->row[2];
+		tmp->row[2] = tmp->row[3];
+		tmp->row[3] = x;
+	}
+	return ;
+}
+
+static int	checklefties(uint64_t *row)
 {
 	if ((((row[0] >> 0) & 1) == 1) ||
 		(((row[1] >> 0) & 1) == 1) ||
@@ -28,19 +46,14 @@ void		normalblocks(t_dlist *input)
 {
 	t_field		*tmp;
 	uint64_t	x;
+	size_t		i;
 
 	while (input != NULL)
 	{
+		i = 0;
 		tmp = input->content;
-		while (tmp->row[0] == 0)
-		{
-			x = tmp->row[0];
-			tmp->row[0] = tmp->row[1];
-			tmp->row[1] = tmp->row[2];
-			tmp->row[2] = tmp->row[3];
-			tmp->row[3] = x;
-		}
-		while (checklefties(tmp->row) == 0)
+		setuppies(tmp);
+		while (checklefties(tmp->row) == 0 && i <= 4)
 		{
 			x = 0;
 			while (x != 4)
@@ -48,6 +61,7 @@ void		normalblocks(t_dlist *input)
 				tmp->row[x] = tmp->row[x] >> 1;
 				x++;
 			}
+			i++;
 		}
 		input = input->next;
 	}
