@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalblocks.c                                     :+:      :+:    :+:   */
+/*   normalize_blocks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esukava <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 18:15:47 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/03 17:45:00 by esukava          ###   ########.fr       */
+/*   Updated: 2020/09/04 15:58:44 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../bitlib/bitlib.h"
-#include "../libdl/libdl.h"
+#include "fillit.h"
 
-static void	setuppies(t_field *tmp)
+static void		check_columns(t_field *tmp)
 {
 	uint64_t	x;
 	size_t		i;
@@ -32,7 +30,7 @@ static void	setuppies(t_field *tmp)
 	return ;
 }
 
-static int	checklefties(uint64_t *row)
+static int		check_rows(uint64_t *row)
 {
 	if ((((row[0] >> 0) & 1) == 1) ||
 		(((row[1] >> 0) & 1) == 1) ||
@@ -42,7 +40,7 @@ static int	checklefties(uint64_t *row)
 	return (0);
 }
 
-void		normalblocks(t_dlist *input)
+void			normalize_blocks(t_dlist *input)
 {
 	t_field		*tmp;
 	uint64_t	x;
@@ -52,8 +50,8 @@ void		normalblocks(t_dlist *input)
 	{
 		i = 0;
 		tmp = input->content;
-		setuppies(tmp);
-		while (checklefties(tmp->row) == 0 && i <= 4)
+		check_columns(tmp);
+		while (check_rows(tmp->row) == 0 && i <= 4)
 		{
 			x = 0;
 			while (x != 4)

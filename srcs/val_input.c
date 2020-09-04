@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 01:52:29 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/30 01:52:31 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/04 16:16:14 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			val_input(char *file)
 			return (0);
 		i++;
 	}
-	if (i % 5 == 0)
+	if ((i + 1) % 5 == 0)
 		return (1);
 	close(fd);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/02 17:30:53 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/04 15:59:18 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		ERROR("Argumentit kyrvällään...\n");
+	normalize_blocks(PROGRAM->INPUT);
 	printf("Sul on %d palikkaa.\n", (int)PROGRAM->BLOCK_COUNT);
 	if (!(val_input(PROGRAM->FILE)))
 		ERROR("Sun inputti on ihan vituillaan!\n");
