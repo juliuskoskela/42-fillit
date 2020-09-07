@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 17:03:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/29 17:25:46 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/04 18:48:03 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int				bf_cmp(t_field *f1, t_field *f2)
 	size_t		i;
 
 	i = 0;
-	if (f1->h != f2->h || f1->w != f2->w)
-		return (0);
 	while (i < f1->h)
 	{
 		if (f1->row[i] != f2->row[i])

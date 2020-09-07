@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/04 15:59:18 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/04 20:23:25 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		main(int argc, char **argv)
 {
+	t_field		*tmp;
 	t_program	*PROGRAM = (t_program *)malloc(sizeof(t_program));
 
 	PROGRAM->FILE = ft_strdup(argv[1]);
@@ -25,15 +26,20 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		ERROR("Argumentit kyrvällään...\n");
-	normalize_blocks(PROGRAM->INPUT);
 	printf("Sul on %d palikkaa.\n", (int)PROGRAM->BLOCK_COUNT);
 	if (!(val_input(PROGRAM->FILE)))
 		ERROR("Sun inputti on ihan vituillaan!\n");
 	else
 		printf("Sun inputit on tikis!.\n");
-	if (!(val_blocks(PROGRAM->INPUT, PROGRAM->BLOCKS_REF)))
-		ERROR("Ei nää oo tetrispalikoit, urpo!\n");
-	else
-		printf("... ja palikatki mintis!\n");
+	// if (!(val_blocks(PROGRAM->INPUT, PROGRAM->BLOCKS_REF)))
+	// 	ERROR("Ei nää oo tetrispalikoit, urpo!\n");
+	// else
+	// 	printf("... ja palikatki mintis!\n");
+	PROGRAM->INPUT = PROGRAM->INPUT->next;
+	tmp = PROGRAM->INPUT->content;
+	bf_print(tmp->row, 4, 4);
+	printf("KIKKELI %d\n", (int)tmp->row[0]);
+	printf("KOKKELI %d\n", (int)tmp->row[1]);
+	printf("%d\n%d", (int)tmp->h, (int)tmp->w);
 	return (0);
 }

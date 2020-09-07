@@ -6,7 +6,7 @@ SRCS = srcs/fillit.c \
 		srcs/read_input.c \
 		srcs/val_blocks.c \
 		srcs/val_input.c \
-		srcs/normalize_blocks.c \
+		srcs/normalize_block.c \
 
 OBJS = $(SRCS:.c=.o)
 DEBUG = $(NAME).dSYM

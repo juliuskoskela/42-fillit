@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:22:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/31 16:13:47 by esukava          ###   ########.fr       */
+/*   Updated: 2020/09/07 12:36:22 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ t_dlist			*read_input(char *file, char one)
 		if (i == 4)
 		{
 			i = 0;
+			normalize_block(block);
+			bf_fieldsize(block);
 			block = bf_new(4, 4);
 			dl_putlast(&head, block);
-			free(line); /* This line was added to reduce leaks*/
+			free(line);
 		}
 		else
 		{
