@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:13:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 20:32:34 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/07 14:18:04 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t			highest_one(uint64_t nb, size_t size)
 	while (i > 0)
 	{
 		if (((nb >> i) & 1) == 1)
-			return(i);
+			return(i + 1);
 		i--;
 	}
 	return(0);

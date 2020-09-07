@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/07 12:46:02 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/07 14:26:39 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ int		main(int argc, char **argv)
 		printf("... ja palikatki mintis!\n");
 	PROGRAM->INPUT = PROGRAM->INPUT->next;
 	tmp = PROGRAM->INPUT->content;
-	bf_print(tmp->row, 4, 4);
-	printf("KIKKELI %d\n", (int)tmp->row[0]);
-	printf("KOKKELI %d\n", (int)tmp->row[1]);
 	printf("%d\n%d", (int)tmp->h, (int)tmp->w);
 	return (0);
 }

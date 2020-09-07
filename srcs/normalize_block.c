@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 18:15:47 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/04 19:49:20 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/07 14:24:53 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void			normalize_block(t_field *input)
 		}
 		i++;
 	}
+	bf_fieldsize(input);
 }
