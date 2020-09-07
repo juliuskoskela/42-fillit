@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:22:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/07 12:36:22 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/07 12:45:11 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ t_dlist			*read_input(char *file, char one)
 		}
 	}
 	close(fd);
-	dl_del_last(&head);
 	return (head);
 }
