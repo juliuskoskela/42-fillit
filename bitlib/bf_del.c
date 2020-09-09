@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dl_del_node.c                                      :+:      :+:    :+:   */
+/*   bf_del.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 15:05:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/09 05:15:40 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/09 05:51:49 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/09 05:52:02 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdl.h"
+#include "bitlib.h"
 
-void		dl_del_node(t_dlist **ref, t_dlist *del)
+void		bf_del(t_field **field)
 {
-	if (*ref == NULL || del == NULL)
-		return ;
-	if (*ref == del)
-		*ref = del->next;
-	if (del->next != NULL)
-		del->next->prev = del->prev;
-	if (del->prev != NULL)
-		del->prev->next = del->next;
-	else
-	{
-		free(del);
-		del = NULL;
-		return ;
-	}
-	free(del);
+	free((*field)->row);
+	free((*field));
 }

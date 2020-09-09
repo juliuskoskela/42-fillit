@@ -7,6 +7,7 @@ SRCS = srcs/fillit.c \
 		srcs/val_blocks.c \
 		srcs/val_input.c \
 		srcs/normalize_block.c \
+		srcs/solver.c \
 
 OBJS = $(SRCS:.c=.o)
 DEBUG = $(NAME).dSYM
@@ -46,7 +47,7 @@ d:
 	@make -C bitlib
 	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
 	@echo "Lldb debug folder"
-	@echo "Compilation of $(NAME) successfu
+	@echo "Compilation of $(NAME) successful!"
 
 $(NAME): $(OBJS)
 	@make -C libft

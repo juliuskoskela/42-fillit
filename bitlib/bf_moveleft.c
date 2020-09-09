@@ -6,20 +6,20 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:03:50 by esukava           #+#    #+#             */
-/*   Updated: 2020/08/24 20:17:28 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/09 05:57:48 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void			bf_moveleft(uint64_t *field, size_t steps, size_t size)
+void		bf_moveleft(t_field *field, size_t steps)
 {
 	size_t		i;
 
 	i = 0;
-	while (i < size - 1)
+	while (i < field->w)
 	{
-		field[i] = field[i] >> steps;
+		field->row[i] = field->row[i] >> steps;
 		i++;
 	}
 }
