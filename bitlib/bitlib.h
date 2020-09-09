@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:34:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/09 05:56:41 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/09 06:14:05 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ void			printbits(uint64_t nb, size_t size);
 uint64_t		*bf_init(size_t size);
 void			bf_print(t_field *field);
 int				bf_fill(uint64_t *field, char *file, char one, size_t size);
-void			bf_ynormal(uint64_t *field, size_t size);
 uint64_t		bf_column(uint64_t *field, size_t col, size_t size);
 void			bf_moveleft(t_field *field, size_t steps);
 void			bf_moveright(t_field *field, size_t steps);
-void			bf_xnormal(uint64_t *field, size_t size);
-void			bf_normalize(uint64_t *field, size_t size);
+void			bf_movedown(t_field **field, size_t steps);
 size_t			highest_one(uint64_t nb, size_t size);
 size_t			lowest_one(uint64_t nb, size_t size);
 int				bf_cmp(t_field *f1, t_field *f2);
