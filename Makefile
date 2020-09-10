@@ -29,6 +29,7 @@ fclean:
 	@make -C bitlib fclean
 	@rm -f $(OBJS)
 	@rm -f $(NAME)
+	rm -rf
 	@echo "Deleted all .o files!"
 ifneq (,$(wildcard .DS_Store))
 	@rm -r .DS_Store
