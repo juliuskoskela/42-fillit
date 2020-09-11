@@ -8,6 +8,7 @@ SRCS = srcs/fillit.c \
 		srcs/val_input.c \
 		srcs/normalize_block.c \
 		srcs/solver.c \
+		srcs/field_list_print.c \
 
 OBJS = $(SRCS:.c=.o)
 DEBUG = $(NAME).dSYM

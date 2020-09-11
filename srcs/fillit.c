@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/09 18:51:52 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/11 16:01:20 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		main(int argc, char **argv)
 	else
 		printf("... ja palikatki mintis!\n");
 	// tmp takes pointer to PROGRAM->INPUT, output is NULL
-	solver(PROGRAM, PROGRAM->INPUT, NULL);
+	field_list_print(PROGRAM->INPUT);
+	solver(PROGRAM, PROGRAM->INPUT, NULL, 0);
 	return (0);
 }

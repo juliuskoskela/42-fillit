@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 02:46:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/09 03:52:50 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/11 03:59:25 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_dlist			*read_input(char *file, char one);
 int				val_blocks(t_dlist *input, t_dlist *ref);
 int				val_input(char *file);
 void			normalize_block(t_field *input);
-void			solver(t_program *PROGRAM, t_dlist *tmp, t_dlist *output);
+void			solver(t_program *PROGRAM, t_dlist *tmp, t_dlist *output, size_t i);
+void			field_list_print(t_dlist *ref);
 
 #endif

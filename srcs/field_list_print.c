@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bf_print.c                                         :+:      :+:    :+:   */
+/*   field_list_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/11 01:56:00 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/11 03:58:57 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/11 03:59:56 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include "fillit.h"
 
-void			bf_print1(uint64_t *field, size_t w, size_t h)
+void		field_list_print(t_dlist *ref)
 {
-	size_t		i;
+	t_field		*field;
+	t_dlist		*tmp;
 
-	i = 0;
-	while (i < h)
+	tmp = ref;
+	while (tmp)
 	{
-		printbits(field[i], w);
-		write(1, "\n", 1);
-		i++;
+		field = tmp->content;
+		bf_print(field);
+		printf("\nf->h: %zu\n", field->h);
+		printf("\nf->w: %zu\n", field->w);
+		printf("\n");
+		tmp = tmp->next;
 	}
-}
-
-void			bf_print(t_field *field)
-{
-	bf_print1(field->row, field->w, field->h);
 }

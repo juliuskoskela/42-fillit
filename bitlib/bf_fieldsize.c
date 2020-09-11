@@ -6,11 +6,12 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 17:29:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/07 14:21:29 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/11 02:31:27 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
+#include <math.h>
 
 static int		ft_log2_64(uint64_t value)
 {
@@ -39,17 +40,18 @@ void	bf_fieldsize(t_field *field)
 	size_t		x;
 	size_t		y;
 	size_t		i;
-	int			nb;
+	size_t		nb;
 
 	i = 0;
 	y = 0;
+	x = 0;
 	while (i < field->h)
 	{
 		if (field->row[i] != 0)
 		{
 			y++;
 			nb = ft_log2_64(field->row[i]) + 1;
-			if (nb > (int)x)
+			if (nb > x)
 				x = nb;
 		}
 		i++;

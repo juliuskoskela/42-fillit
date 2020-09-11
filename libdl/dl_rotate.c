@@ -1,6 +1,6 @@
 #include "libdl.h"
 
-void	dl_rotate(t_dlist **head_ref, int N)
+void	dl_rotate(t_dlist **head_ref, size_t N)
 {
 	t_dlist		*current;
 	t_dlist		*NthNode;
