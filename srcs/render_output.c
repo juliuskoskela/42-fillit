@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 05:30:06 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/09 05:30:46 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/12 06:48:15 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,44 +23,91 @@ char		*bitoa(uint64_t nb, size_t len)
 	while (str[i])
 	{
 		if (checkbit(nb, i) == 1)
-		{
 			str[i] = '1';
-			i++;
-		}
 		else
-		{
 			str[i] = '0';
-			i++;
-		}
+		i++;
 	}
 	return (str);
 }
 
-void		bf_write(t_field *field, char **array, char c)
+void		render_line(char *dest, char *src, char c)
 {
 	size_t		i;
 
 	i = 0;
-	while (i < field->h)
+	while (dest[i] != '\0')
 	{
-		*array[i] = bitoa
+		if (src[i] == '1')
+		{
+			dest[i] = c;
+		}
 		i++;
 	}
 }
 
-void		render_output(t_dlist *output, size_t block_count)
+void		render(t_field *field, char **array, char c)
 {
 	size_t		i;
+	char		*tmp;
+
+	i = 0;
+	while (i < field->h)
+	{
+		tmp = bitoa(field->row[i], field->w);
+		render_line(array[i], tmp, c);
+		free(tmp);
+		i++;
+	}
+}
+
+void			render_output(t_program *PROGRAM, t_dlist *output)
+{
+	size_t		i;
+	size_t		j;
+	size_t		bcnt;
+	size_t		size;
 	char		c;
-	t_field		*tmp;
+	// t_field		*tmp;
 	char		**array;
 
 	i = 0;
+	j = 0;
+	size = PROGRAM->BOARD->h;
 	c = 'A';
-	tmp = output->content;
-	array = (char **)malloc(sizeof(char) * tmp->h);
-	while (i < block_count)
-	{
-		bf_write(tmp, array, c);
-	}
+	array = (char **)malloc(sizeof(char) *  size);
+	printf("\nOutput list at exit:\n\n");
+	field_list_print(output);
+	bcnt = dl_len(output);
+	printf("\e\n[1;38mStart board xy = %d\n\n\e[0m", (int)ft_sqrt(PROGRAM->BLOCK_COUNT * 4) - 1);
+	printf("\e[1;38mOutput count at exit: %zu\n\e[0m", bcnt);
+	printf("\e[1;38m\nBoard at exit(size %zu):\n\n\e[0m", PROGRAM->BOARD->w);
+	bf_print(PROGRAM->BOARD);
+	// while (i < size)
+	// {
+	// 	array[i] = ft_strnew(size + 2);
+	// 	array[i][size] = '\n';
+	// 	array[i][size + 1] = '\0';
+	// 	while (j < size)
+	// 	{
+	// 		array[i][j] = '.';
+	// 		j++;
+	// 	}
+	// 	j = 0;
+	// 	i++;
+	// }
+	// i = 0;
+	// while (i < PROGRAM->BLOCK_COUNT)
+	// {
+	// 	tmp = output->content;
+	// 	render(tmp, array, c);
+	// 	output = output->next;
+	// 	i++;
+	// }
+	// i = 0;
+	// while (i < size)
+	// {
+	// 	ft_putstr(array[i]);
+	// 	i++;
+	// }
 }

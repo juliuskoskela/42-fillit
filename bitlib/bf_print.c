@@ -6,11 +6,12 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/11 01:56:00 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/12 01:31:51 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
+#include "stdio.h"
 
 void			bf_print1(uint64_t *field, size_t w, size_t h)
 {
@@ -20,7 +21,7 @@ void			bf_print1(uint64_t *field, size_t w, size_t h)
 	while (i < h)
 	{
 		printbits(field[i], w);
-		write(1, "\n", 1);
+		printf("\n");
 		i++;
 	}
 }

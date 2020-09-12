@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   field_list_print.c                                 :+:      :+:    :+:   */
+/*   dl_del_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 03:58:57 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/12 01:15:48 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/12 05:24:38 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/12 05:25:24 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+// #include "libdl.h"
 
-void		field_list_print(t_dlist *ref)
-{
-	t_field		*field;
-	t_dlist		*tmp;
+// void		dl_del_list(t_dlist **ref)
+// {
+// 	t_dlist		*n;
+// 	t_field		*tmp;
+// 	t_dlist		*tmp2;
 
-	tmp = ref;
-	while (tmp)
-	{
-		field = tmp->content;
-		bf_print(field);
-		printf("\nf->h: %zu\n", field->h);
-		printf("\nf->w: %zu\n", field->w);
-		printf("\n");
-		tmp = tmp->next;
-	}
-}
+// 	tmp2 = (*ref);
+// 	while (tmp2)
+// 	{
+// 		tmp = tmp2->content;
+// 		bf_del(&tmp);
+// 		n = tmp2;
+// 		tmp2 = tmp2->next;
+// 		dl_del_node(&n, n);
+// 	}
+// }

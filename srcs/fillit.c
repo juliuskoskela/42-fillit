@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/11 16:01:20 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/12 05:41:38 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,25 @@ int		main(int argc, char **argv)
 
 	PROGRAM->FILE = ft_strdup(argv[1]);
 	PROGRAM->ONE = '#';
-	PROGRAM->BOARD = bf_new(2, 2);
 	PROGRAM->BLOCKS_REF = read_input("txt/tetrominoes.txt", PROGRAM->ONE);
 	PROGRAM->INPUT = read_input(PROGRAM->FILE, PROGRAM->ONE);
 	PROGRAM->BLOCK_COUNT = dl_len(PROGRAM->INPUT);
+	PROGRAM->BOARD = bf_new((int)ft_sqrt(PROGRAM->BLOCK_COUNT * 4) - 1, (int)ft_sqrt(PROGRAM->BLOCK_COUNT * 4) - 1);
 
+	if (PROGRAM->BLOCK_COUNT > 26)
+		ERROR("\e[1;35mToo many blocks!\e[0m");
 	if (argc != 2)
-		ERROR("Argumentit kyrvällään...\n");
-	printf("Sul on %d palikkaa.\n", (int)PROGRAM->BLOCK_COUNT);
+		ERROR("\e[1;35mToo many arguments!\e[0m");
+	printf("\e\n[1;35mYou have %d blocks\n\n\e[0m", (int)PROGRAM->BLOCK_COUNT);
 	if (!(val_input(PROGRAM->FILE)))
-		ERROR("Sun inputti on ihan vituillaan!\n");
+		ERROR("\e[1;35mSun inputti on ihan vituillaan!!\e[0m");
 	else
-		printf("Sun inputit on tikis!.\n");
+		printf("\e[1;35mInput correct!\n\n\e[0m");
 	if (!(val_blocks(PROGRAM->INPUT, PROGRAM->BLOCKS_REF)))
-		ERROR("Ei nää oo tetrispalikoit, urpo!\n");
+		ERROR("\e[1;35mInput incorrect!\n\\ne[0m");
 	else
-		printf("... ja palikatki mintis!\n");
-	// tmp takes pointer to PROGRAM->INPUT, output is NULL
-	field_list_print(PROGRAM->INPUT);
+		printf("\e[1;35mBlocks are valid!\n\e[0m");
+	//field_list_print(PROGRAM->INPUT);
 	solver(PROGRAM, PROGRAM->INPUT, NULL, 0);
 	return (0);
 }

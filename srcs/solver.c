@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 17:07:04 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/11 16:35:21 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/12 06:38:40 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_field		*fitblock(t_field **input, t_field **board, size_t x, size_t y)
 {
 	t_field		*newblock;
 
-	if ((*board)->w <= (*input)->w || (*board)->h <= (*input)->h)
+	if ((*board)->w < (*input)->w || (*board)->h < (*input)->h)
 		return (NULL);
 	newblock = bf_new((*board)->w, (*board)->h);
 	bf_fieldplus(newblock, *input);
@@ -40,23 +40,6 @@ t_field		*fitblock(t_field **input, t_field **board, size_t x, size_t y)
 	return (NULL);
 }
 
-void		dl_del_list(t_dlist **ref)
-{
-	t_dlist		*n;
-	t_field		*tmp;
-	t_dlist		*tmp2;
-
-	tmp2 = (*ref);
-	while (tmp2)
-	{
-		tmp = tmp2->content;
-		bf_del(&tmp);
-		n = tmp2;
-		tmp2 = tmp2->next;
-		dl_del_node(&n, n);
-	}
-}
-
 t_field		*fitblock_list(t_dlist **input, t_field **board)
 {
 	t_field		*ret;
@@ -77,16 +60,10 @@ void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
 {
 	t_field		*ret;
 	t_dlist		*tmp;
-	size_t		bcnt = 0;
 
 	if (i == PROGRAM->BLOCK_COUNT)
 	{
-		bcnt = dl_len(output);
-		printf("Output count at exit: %zu\n\n", bcnt);
-		printf("Board at exit:\n\n");
-		bf_print(PROGRAM->BOARD);
-		printf("\nOutput list at exit:\n\n");
-		field_list_print(output);
+		render_output(PROGRAM, output);
 		ERROR("\nFinished!\n");
 		return ;
 	}
@@ -107,9 +84,42 @@ void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
 	}
 	else
 	{
-		PROGRAM->BOARD->h++;
-		PROGRAM->BOARD->w++;
-		PROGRAM->BOARD = bf_new(PROGRAM->BOARD->w, PROGRAM->BOARD->h);
+		PROGRAM->BOARD = bf_new(PROGRAM->BOARD->w + 1, PROGRAM->BOARD->h + 1);
+		dl_rotate(&PROGRAM->INPUT, 1);
 		solver(PROGRAM, PROGRAM->INPUT, output, 0);
 	}
 }
+
+// void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
+// {
+// 	t_field		*ret;
+// 	t_dlist		*tmp;
+
+// 	if (i == PROGRAM->BLOCK_COUNT)
+// 	{
+// 		render_output(PROGRAM, output);
+// 		ERROR("\nFinished!\n");
+// 		return ;
+// 	}
+// 	if ((ret = fitblock_list(&input, &PROGRAM->BOARD)))
+// 	{
+// 		dl_putlast(&output, ret);
+// 		bf_fieldplus(PROGRAM->BOARD, ret);
+// 		solver(PROGRAM, input->next, output, i + 1);
+// 	}
+// 	else if (i > 0)
+// 	{
+// 		tmp = output;
+// 		while (tmp->next)
+// 			tmp = tmp->next;
+// 		bf_fieldminus(PROGRAM->BOARD, tmp->content);
+// 		dl_del_last(&output);
+// 		solver(PROGRAM, input, output, i - 1);
+// 	}
+// 	else
+// 	{
+// 		PROGRAM->BOARD = bf_new(PROGRAM->BOARD->w + 1, PROGRAM->BOARD->h + 1);
+// 		dl_rotate(&PROGRAM->INPUT, 1);
+// 		solver(PROGRAM, PROGRAM->INPUT, output, 0);
+// 	}
+// }
