@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 17:07:04 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/12 18:37:35 by jkoskela         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "fillit.h"
 
@@ -64,7 +53,6 @@ void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
 	if (i == PROGRAM->BLOCK_COUNT)
 	{
 		render_output(PROGRAM, output);
-		ERROR("\nFinished!\n");
 		return ;
 	}
 	if ((ret = fitblock_list(&input, &PROGRAM->BOARD)))
@@ -89,6 +77,31 @@ void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
 		solver(PROGRAM, PROGRAM->INPUT, output, 0);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
 // {

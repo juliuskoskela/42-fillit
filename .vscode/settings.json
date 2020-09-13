@@ -13,5 +13,13 @@
         "utility": "c",
         "vector": "c",
         "locale": "c"
-    }
+    },
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ]
 }

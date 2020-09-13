@@ -88,25 +88,23 @@ void			render_output(t_program *PROGRAM, t_dlist *output)
 	printf("output render: \n\n");
 	while (i < size)
 	{
-		array[i] = ft_strnew(size + 2);
-		array[i][size] = '\n';
-		array[i][size + 1] = '\0';
+		array[i] = ft_calloc(size + 1, sizeof(char));
 		while (j < size)
 		{
 			array[i][j] = '.';
 			j++;
 		}
+		array[i][size] = '\n';
+		array[i][size + 1] = '\0';
 		j = 0;
 		i++;
 	}
 	i = 0;
-	while (i < PROGRAM->BLOCK_COUNT)
+	while (output)
 	{
 		tmp = output->content;
 		render(tmp, array, c);
-		if (output->next)
-			output = output->next;
-		i++;
+		output = output->next;
 		c++;
 	}
 	i = 0;

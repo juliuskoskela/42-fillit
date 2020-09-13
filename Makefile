@@ -19,6 +19,10 @@ DEBUG = $(NAME).dSYM
 all: $(NAME)
 
 clean:
+ifneq (,$(wildcard $(NAME).dSYM))
+	@rm -r $(DEBUG)
+	@echo "Deleted $(NAME).dSYM in $(NAME)"
+endif
 	@make -C libft clean
 	@make -C libdl clean
 	@make -C bitlib clean
