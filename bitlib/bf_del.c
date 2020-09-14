@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 05:51:49 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/09 05:52:02 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/14 04:02:28 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ void		bf_del(t_field **field)
 {
 	free((*field)->row);
 	free((*field));
+	(*field) = NULL;
 }

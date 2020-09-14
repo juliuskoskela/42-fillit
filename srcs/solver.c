@@ -1,89 +1,131 @@
 
 #include "fillit.h"
 
-t_field		*fitblock(t_field **input, t_field **board, size_t x, size_t y)
+void		bf_clear(t_field *field)
 {
-	t_field		*newblock;
+	size_t	i;
 
-	if ((*board)->w < (*input)->w || (*board)->h < (*input)->h)
-		return (NULL);
-	newblock = bf_new((*board)->w, (*board)->h);
-	bf_fieldplus(newblock, *input);
-	while (y <= (*board)->h - (*input)->h)
+	i = 0;
+	while (i < field->h)
 	{
-		while (x <= (*board)->w - (*input)->w)
+		field->row[i] = 0;
+		i++;
+	}
+}
+
+t_field		*bf_dup(t_field *src)
+{
+	t_field		*dest;
+	size_t		i;
+
+	i = 0;
+	dest = bf_new(src->w, src->h);
+	while (i < src->h)
+	{
+		dest->row[i] = src->row[i];
+		i++;
+	}
+	return (dest);
+}
+
+t_dlist			*dl_get_last(t_dlist *list)
+{
+	while(list->next)
+		list = list->next;
+	return (list);
+}
+
+int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
+{
+	t_field		*tmp_fld;
+
+	if (!Program->input->next)
+		return (1);
+	bf_fieldplus(tetromino, Program->input->content);
+	tetromino->h = Program->board->h;
+	tetromino->w = Program->board->w;
+	while (y <= Program->board->h)
+	{
+		while (x <= Program->board->w)
 		{
-			if (!(bf_overlap(*board, newblock)))
+			if (bf_overlap(Program->board, tetromino))
 			{
-				bf_moveright(newblock, 1);
-				x++;
+				bf_fieldplus(Program->board, tetromino);
+				dl_putlast(&Program->output, tetromino);
+				Program->input = Program->input->next;
+				tmp_fld = Program->input->content;
+				if (solve_map(Program, tetromino, tmp_fld->w, tmp_fld->h))
+					return (1);
+				else
+					bf_fieldminus(Program->board, tetromino);
 			}
 			else
-				return (newblock);
+			{
+				bf_moveright(tetromino, 1);
+				x++;
+			}
 		}
-		bf_moveleft(newblock, x);
-		bf_movedown(&newblock, 1);
+		bf_moveleft(tetromino, x);
+		bf_movedown(tetromino);
 		x = 0;
 		y++;
 	}
-	return (NULL);
+	return (0);
 }
 
-t_field		*fitblock_list(t_dlist **input, t_field **board)
+void		solver(t_program *Program)
 {
-	t_field		*ret;
-	t_dlist		*tmp;
+	t_field		*tmp;
+	t_field		*init_output;
 
-	tmp = *input;
-	while (tmp)
+	tmp = Program->input->content;
+	init_output = bf_dup(Program->board);
+	while ((solve_map(Program, init_output, tmp->w, tmp->h) == 0))
 	{
-		ret = tmp->content;
-		if ((ret = fitblock(&ret, board, 0, 0)) != NULL)
-			return (ret);
-		tmp = tmp->next;
+		bf_clear(Program->board);
+		Program->board->h++;
+		Program->board->w++;
 	}
-	return (NULL);
+	return render_output(Program);
 }
 
-void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
-{
-	t_field		*ret;
-	t_dlist		*tmp;
+// int		solve_board(t_program *Program, size_t i)
+// {
+// 	t_field		*ret;
+// 	t_dlist		*head;
 
-	if (i == PROGRAM->BLOCK_COUNT)
-	{
-		render_output(PROGRAM, output);
-		return ;
-	}
-	if ((ret = fitblock_list(&input, &PROGRAM->BOARD)))
-	{
-		dl_putlast(&output, ret);
-		bf_fieldplus(PROGRAM->BOARD, ret);
-		solver(PROGRAM, input->next, output, i + 1);
-	}
-	else if (i > 0)
-	{
-		tmp = output;
-		while (tmp->next)
-			tmp = tmp->next;
-		bf_fieldminus(PROGRAM->BOARD, tmp->content);
-		dl_del_last(&output);
-		solver(PROGRAM, input, output, i - 1);
-	}
-	else
-	{
-		PROGRAM->BOARD = bf_new(PROGRAM->BOARD->w + 1, PROGRAM->BOARD->h + 1);
-		dl_rotate(&PROGRAM->INPUT, 1);
-		solver(PROGRAM, PROGRAM->INPUT, output, 0);
-	}
-}
+// 	head = Program->input;
+// 	while (Program->input)
+// 	{
+// 		if (ret && i == Program->tetromino_count)
+// 			return (1);
+// 		if ((ret = fittetromino(&Program->board, &Program->input, 0,0)))
+// 		{
+// 			dl_putlast(&Program->output, ret);
+// 			bf_fieldplus(Program->board, ret);
+// 			Program->input = Program->input->next;
+// 			i++;
+// 		}
+// 		else
+// 		{
+// 			head = head->next;
+// 			Program->input = head;
+// 		}
+// 	}
+// 	return (0);
+// }
 
+// void		solver(t_program *Program)
+// {
+// 	int		ret;
 
-
-
-
-
-
+// 	ret = solve_board(Program->board, 0);
+// 	if (ret)
+// 			return render_output(Program);
+// 	Program->board->h++;
+// 	Program->board->w++;
+// 	solver(Program);
+// }
 
 
 
@@ -103,36 +145,144 @@ void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
 
 
 
-// void		solver(t_program *PROGRAM, t_dlist *input, t_dlist *output, size_t i)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// void		solver(t_program *Program)
 // {
 // 	t_field		*ret;
 // 	t_dlist		*tmp;
 
-// 	if (i == PROGRAM->BLOCK_COUNT)
+// 	ret = Program->input->content;
+// 	while ((ret = fittetromino(&Program->board, &ret, 0, 0)))
 // 	{
-// 		render_output(PROGRAM, output);
-// 		ERROR("\nFinished!\n");
-// 		return ;
+// 		dl_putlast(&Program->output, ret);
+// 		bf_fieldplus(Program->board, ret);
+// 		Program->input = Program->input->next;
+// 		if (!Program->input->next)
+// 			return render_output(Program);
 // 	}
-// 	if ((ret = fitblock_list(&input, &PROGRAM->BOARD)))
+// 	if (Program->input->next)
 // 	{
-// 		dl_putlast(&output, ret);
-// 		bf_fieldplus(PROGRAM->BOARD, ret);
-// 		solver(PROGRAM, input->next, output, i + 1);
-// 	}
-// 	else if (i > 0)
-// 	{
-// 		tmp = output;
+// 		tmp = Program->output;
 // 		while (tmp->next)
 // 			tmp = tmp->next;
-// 		bf_fieldminus(PROGRAM->BOARD, tmp->content);
-// 		dl_del_last(&output);
-// 		solver(PROGRAM, input, output, i - 1);
+// 		bf_fieldminus(Program->board, tmp->content);
+// 		dl_del_last(&Program->output);
+// 	}
+// 	else
+// 		Program->board = bf_new(Program->board->w + 1, Program->board->h + 1);
+// 	solver(Program);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// t_field		*fittetromino_list(t_field **board, t_dlist **input)
+// {
+// 	t_field		*ret;
+// 	t_dlist		*tmp;
+
+// 	tmp = *input;
+// 	while (tmp)
+// 	{
+// 		ret = tmp->content;
+// 		if ((ret = fittetromino(board, &ret, 0, 0)) != NULL)
+// 			return (ret);
+// 		tmp = tmp->next;
+// 	}
+// 	return (NULL);
+// }
+
+// void		solver(t_program *Program)
+// {
+// 	t_field		*ret;
+// 	t_dlist		*tmp;
+
+// 	if (Program->steps == Program->tetromino_count)
+// 		return render_output(Program);
+// 	if ((ret = fittetromino_list(&Program->input, &Program->board)))
+// 	{
+// 		dl_putlast(&Program->output, ret);
+// 		bf_fieldplus(Program->board, ret);
+// 		Program->input = Program->input->next;
+// 		Program->steps++;
+// 	}
+// 	else if (Program->steps > 0)
+// 	{
+// 		tmp = Program->output;
+// 		while (tmp->next)
+// 			tmp = tmp->next;
+// 		bf_fieldminus(Program->board, tmp->content);
+// 		dl_del_last(&Program->output);
 // 	}
 // 	else
 // 	{
-// 		PROGRAM->BOARD = bf_new(PROGRAM->BOARD->w + 1, PROGRAM->BOARD->h + 1);
-// 		dl_rotate(&PROGRAM->INPUT, 1);
-// 		solver(PROGRAM, PROGRAM->INPUT, output, 0);
+// 		Program->board = bf_new(Program->board->w + 1, Program->board->h + 1);
+// 		dl_rotate(&Program->input, 1);
 // 	}
+// 	solver(Program);
+// }
+
+// void		solver(t_program *Program)
+// {
+// 	t_field		*ret;
+
+// 	if (Program->input)
+// 	{
+// 		ret = Program->input->content;
+// 		if ((ret = fittetromino(&Program->board, &ret, 0, 0)))
+// 		{
+// 			dl_putlast(&Program->output, ret);
+// 			bf_fieldplus(Program->board, ret);
+// 			Program->input = Program->input->next;
+// 			if (!Program->input->next)
+// 				return render_output(Program);
+// 		}
+// 	}
+// 	else
+// 		Program->board = bf_new(Program->board->w + 1, Program->board->h + 1);
+// 	solver(Program);
 // }

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/12 18:50:50 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/14 02:23:19 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 int		main(int argc, char **argv)
 {
-	t_program	*PROGRAM = (t_program *)malloc(sizeof(t_program));
+	t_program	*Program = (t_program *)malloc(sizeof(t_program));
 
-	PROGRAM->FILE = ft_strdup(argv[1]);
-	PROGRAM->ONE = '#';
-	PROGRAM->BLOCKS_REF = read_input("txt/tetrominoes.txt", PROGRAM->ONE);
-	PROGRAM->INPUT = read_input(PROGRAM->FILE, PROGRAM->ONE);
-	PROGRAM->BLOCK_COUNT = dl_len(PROGRAM->INPUT);
-	PROGRAM->BOARD = bf_new((int)ft_sqrt(PROGRAM->BLOCK_COUNT * 4) - 1, (int)ft_sqrt(PROGRAM->BLOCK_COUNT * 4) - 1);
+	Program->file = ft_strdup(argv[1]);
+	Program->one = '#';
+	Program->blocks_ref = read_input("txt/tetrominoes.txt", Program->one);
+	Program->input = read_input(Program->file, Program->one);
+	Program->output = (t_dlist *)malloc(sizeof(t_dlist));
+	Program->block_count = dl_len(Program->input);
+	Program->board = bf_new((size_t)ft_sqrt(Program->block_count * 4), (size_t)ft_sqrt(Program->block_count * 4));
+	Program->steps = 0;
 
-	if (PROGRAM->BLOCK_COUNT > 26)
+	if (Program->block_count > 26)
 		ERROR("\e[1;35mToo many blocks!\e[0m");
 	if (argc != 2)
 		ERROR("\e[1;35mToo many arguments!\e[0m");
-	printf("\e\n[1;35mYou have %d blocks\n\n\e[0m", (int)PROGRAM->BLOCK_COUNT);
-	if (!(val_input(PROGRAM->FILE)))
-		ERROR("\e[1;35mSun inputti on ihan vituillaan!!\e[0m");
+	printf("\e\n[1;35mYou have %d blocks\n\n\e[0m", (int)Program->block_count);
+	if (!(val_input(Program->file)))
+		ERROR("\e[1;35minput incorrect!\e[0m");
 	else
-		printf("\e[1;35mInput correct!\n\n\e[0m");
-	if (!(val_blocks(PROGRAM->INPUT, PROGRAM->BLOCKS_REF)))
-		ERROR("\e[1;35mInput incorrect!\n\\ne[0m");
+		printf("\e[1;35minput correct!\n\n\e[0m");
+	if (!(val_blocks(Program->input, Program->blocks_ref)))
+		ERROR("\e[1;35minput incorrect!\n\\ne[0m");
 	else
 		printf("\e[1;35mBlocks are valid!\n\e[0m");
-	//field_list_print(PROGRAM->INPUT);
-	solver(PROGRAM, PROGRAM->INPUT, NULL, 0);
+	//field_list_print(Program->input);
+	solver(Program);
 	return (0);
 }

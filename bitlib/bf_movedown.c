@@ -6,29 +6,21 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 02:08:21 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/09 05:54:34 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/14 03:43:57 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-void		bf_movedown(t_field **field, size_t steps)
+void		bf_movedown(t_field *field)
 {
-	t_field		*tmp;
 	size_t		i;
 
-	tmp = bf_new((*field)->w, (*field)->h);
-	i = 0;
-	while (i < steps)
+	i = field->h;
+	while (i > 0)
 	{
-		tmp->row[i] = 0;
-		i++;
+		field->row[i] = field->row[i - 1];
+		field->row[i - 1] = 0;
+		i--;
 	}
-	while (i < (*field)->h)
-	{
-		tmp->row[i] = (*field)->row[i - steps];
-		i++;
-	}
-	bf_del(field);
-	*field = tmp;
 }
