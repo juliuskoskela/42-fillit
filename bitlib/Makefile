@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 12:48:50 by jkoskela          #+#    #+#              #
-#    Updated: 2020/09/09 06:13:55 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/09/14 16:09:00 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,9 @@ SRC = bf_column.c \
 		bf_overlap.c \
 		bf_fieldminus.c \
 		bf_fieldplus.c \
+		bf_dup.c \
+		bf_clear.c \
+		bitoa.c \
 
 OBJ = $(SRC:.c=.o)
 

@@ -12,25 +12,6 @@
 
 #include "fillit.h"
 
-char		*bitoa(uint64_t nb, size_t len)
-{
-	size_t		i;
-	char		*str;
-
-	i = 0;
-	str = ft_strnew(len);
-	str[len + 1] = '\0';
-	while (i < len)
-	{
-		if (checkbit(nb, i) == 1)
-			str[i] = '1';
-		else
-			str[i] = '0';
-		i++;
-	}
-	return (str);
-}
-
 void		render_line(char *dest, char *src, char c)
 {
 	size_t		i;

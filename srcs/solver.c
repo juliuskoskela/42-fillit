@@ -1,40 +1,6 @@
 
 #include "fillit.h"
 
-void		bf_clear(t_field *field)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < field->h)
-	{
-		field->row[i] = 0;
-		i++;
-	}
-}
-
-t_field		*bf_dup(t_field *src)
-{
-	t_field		*dest;
-	size_t		i;
-
-	i = 0;
-	dest = bf_new(src->w, src->h);
-	while (i < src->h)
-	{
-		dest->row[i] = src->row[i];
-		i++;
-	}
-	return (dest);
-}
-
-t_dlist			*dl_get_last(t_dlist *list)
-{
-	while(list->next)
-		list = list->next;
-	return (list);
-}
-
 int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
 {
 	t_field		*tmp_fld;

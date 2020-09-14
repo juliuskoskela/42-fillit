@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:34:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/14 03:43:39 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/14 16:07:36 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ void			bf_del(t_field **field);
 void			bf_fieldplus(t_field *board, t_field *field);
 void			bf_fieldminus(t_field *board, t_field *field);
 int				bf_overlap(t_field *board, t_field *field);
+t_field			*bf_dup(t_field *src);
+void			bf_clear(t_field *field);
+char			*bitoa(uint64_t nb, size_t len);
 
 #endif

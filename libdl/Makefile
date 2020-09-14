@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 12:48:50 by jkoskela          #+#    #+#              #
-#    Updated: 2020/09/10 18:02:25 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/09/14 16:02:54 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = dl_len.c \
 		dl_del_node_at.c \
 		dl_del_last.c \
 		dl_rotate.c \
+		dl_get_last.c \
 
 OBJ = $(SRC:.c=.o)
 
