@@ -77,7 +77,9 @@ void			render_output(t_program *Program)
 	// c = 'A';
 	// array = (char **)malloc(sizeof(char) *  size + 1);
 	// // printf("\noutput list at exit:\n\n");
-	// // // field_list_print(Program->output);
+	while (Program->output->prev)
+		Program->output = Program->output->prev;
+	field_list_print(Program->output);
 	// // // bcnt = dl_len(Program->output);
 	// // // printf("\e\n[1;34mStart board xy: %d\n\n\e[0m", (int)ft_sqrt(Program->block_count * 4) - 1);
 	// // // printf("\e[1;34moutput count at exit: %zu\n\e[0m", bcnt);

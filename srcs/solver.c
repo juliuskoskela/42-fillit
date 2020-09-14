@@ -57,13 +57,13 @@ int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
 				if (solve_map(Program, tetromino, tmp_fld->w, tmp_fld->h))
 					return (1);
 				else
+				{
 					bf_fieldminus(Program->board, tetromino);
+					dl_del_last(&Program->output);
+				}
 			}
-			else
-			{
-				bf_moveright(tetromino, 1);
-				x++;
-			}
+			bf_moveright(tetromino, 1);
+			x++;
 		}
 		bf_moveleft(tetromino, x);
 		bf_movedown(tetromino);
