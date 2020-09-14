@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 17:29:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/11 02:31:27 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/15 02:20:21 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	bf_fieldsize(t_field *field)
 	i = 0;
 	y = 0;
 	x = 0;
+	if (!field)
+		return ;
 	while (i < field->h)
 	{
 		if (field->row[i] != 0)

@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 12:48:50 by jkoskela          #+#    #+#              #
-#    Updated: 2020/09/09 06:13:55 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/09/15 01:11:12 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = bf_column.c \
 		bf_moveleft.c \
 		bf_moveright.c \
 		bf_movedown.c \
+		bf_moveup.c \
 		bf_print.c \
 		checkbit.c \
 		highest_one.c \
@@ -35,6 +36,8 @@ SRC = bf_column.c \
 		bf_overlap.c \
 		bf_fieldminus.c \
 		bf_fieldplus.c \
+		bf_dup.c \
+		bf_clear.c \
 
 OBJ = $(SRC:.c=.o)
 

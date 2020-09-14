@@ -6,20 +6,22 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 17:03:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/04 18:48:03 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/15 02:19:58 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-int				bf_cmp(t_field *f1, t_field *f2)
+int				bf_cmp(t_field **f1, t_field **f2)
 {
 	size_t		i;
 
 	i = 0;
-	while (i < f1->h)
+	if (!(*f1) || !(*f2))
+		return (-1);
+	while (i < (*f1)->h)
 	{
-		if (f1->row[i] != f2->row[i])
+		if ((*f1)->row[i] != (*f2)->row[i])
 			return (0);
 		i++;
 	}

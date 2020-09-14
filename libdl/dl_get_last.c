@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   field_list_print.c                                 :+:      :+:    :+:   */
+/*   dl_get_last.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 03:58:57 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/15 02:07:58 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/15 01:11:40 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/15 01:11:55 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libdl.h"
 
-void		field_list_print(t_dlist *ref)
+t_dlist			*dl_get_last(t_dlist *list)
 {
-	t_field		*field;
-	t_dlist		*tmp;
-
-	tmp = ref;
-	while (tmp)
-	{
-		field = tmp->content;
-		bf_print(&field);
-		printf("\nf->h: %zu\n", field->h);
-		printf("\nf->w: %zu\n", field->w);
-		printf("\n");
-		tmp = tmp->next;
-	}
+	while(list->next)
+		list = list->next;
+	return (list);
 }

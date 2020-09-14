@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   field_list_print.c                                 :+:      :+:    :+:   */
+/*   bf_dup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 03:58:57 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/15 02:07:58 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/15 01:08:28 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/15 02:19:38 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include	"bitlib.h"
 
-void		field_list_print(t_dlist *ref)
+t_field		*bf_dup(t_field *src)
 {
-	t_field		*field;
-	t_dlist		*tmp;
+	t_field		*dest;
+	size_t		i;
 
-	tmp = ref;
-	while (tmp)
+	i = 0;
+	dest = bf_new(src->w, src->h);
+	while (i < src->h)
 	{
-		field = tmp->content;
-		bf_print(&field);
-		printf("\nf->h: %zu\n", field->h);
-		printf("\nf->w: %zu\n", field->w);
-		printf("\n");
-		tmp = tmp->next;
+		dest->row[i] = src->row[i];
+		i++;
 	}
+	return (dest);
 }

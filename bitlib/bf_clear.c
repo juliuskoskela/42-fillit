@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   field_list_print.c                                 :+:      :+:    :+:   */
+/*   bf_clear.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 03:58:57 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/15 02:07:58 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/15 01:10:31 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/15 01:57:22 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "bitlib.h"
 
-void		field_list_print(t_dlist *ref)
+void		bf_clear(t_field **field)
 {
-	t_field		*field;
-	t_dlist		*tmp;
+	size_t	i;
 
-	tmp = ref;
-	while (tmp)
+	i = 0;
+	if (!(*field))
+		return ;
+	while (i < (*field)->h)
 	{
-		field = tmp->content;
-		bf_print(&field);
-		printf("\nf->h: %zu\n", field->h);
-		printf("\nf->w: %zu\n", field->w);
-		printf("\n");
-		tmp = tmp->next;
+		(*field)->row[i] = 0;
+		i++;
 	}
 }

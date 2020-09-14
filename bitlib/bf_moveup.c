@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   field_list_print.c                                 :+:      :+:    :+:   */
+/*   bf_moveup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 03:58:57 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/15 02:07:58 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/15 00:39:30 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/15 01:52:29 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "bitlib.h"
 
-void		field_list_print(t_dlist *ref)
+void		bf_moveup(t_field **field, size_t steps)
 {
-	t_field		*field;
-	t_dlist		*tmp;
+	size_t		i;
 
-	tmp = ref;
-	while (tmp)
+	i = 0;
+	if (!(*field))
+		return ;
+	while (steps)
 	{
-		field = tmp->content;
-		bf_print(&field);
-		printf("\nf->h: %zu\n", field->h);
-		printf("\nf->w: %zu\n", field->w);
-		printf("\n");
-		tmp = tmp->next;
+		while (i < (*field)->h)
+		{
+			(*field)->row[i] = (*field)->row[i + 1];
+			(*field)->row[i + 1] = 0;
+			i++;
+		}
+		i = 0;
+		steps--;
 	}
 }

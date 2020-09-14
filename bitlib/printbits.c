@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:44:16 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/12 01:32:13 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/15 00:57:46 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void			printbits(uint64_t nb, size_t size)
 	while (i < size)
 	{
 		c = checkbit(nb, i) ? '1' : '0';
-		if (c == '1')
-			printf("\e[1;35m%c\e[0m", c);
-		else if (c == '0')
-			printf("\e[1;36m%c\e[0m", c);
-		//write(1, &c, 1);
+		write(1, &c, 1);
 		i++;
 	}
 }

@@ -1,72 +1,66 @@
 
 #include "fillit.h"
 
-void		bf_clear(t_field *field)
+int				movex(t_field *board, t_field *tetromino)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < field->h)
-	{
-		field->row[i] = 0;
-		i++;
-	}
+	bf_moveright(&*tetromino, 1);
+	if (bf_overlap(&*board, &*tetromino));
+		return(1);
+	bf_moveleft(&*tetromino, 1);
+	return (0);
 }
 
-t_field		*bf_dup(t_field *src)
+int				movey(t_field **board, t_field **tetromino)
 {
-	t_field		*dest;
-	size_t		i;
-
-	i = 0;
-	dest = bf_new(src->w, src->h);
-	while (i < src->h)
-	{
-		dest->row[i] = src->row[i];
-		i++;
-	}
-	return (dest);
+	bf_movedown(&*tetromino, 1);
+	if (bf_overlap(&*board, &*tetromino));
+		return(1);
+	bf_moveup(&*tetromino, 1);
+	return (0);
 }
 
-t_dlist			*dl_get_last(t_dlist *list)
-{
-	while(list->next)
-		list = list->next;
-	return (list);
-}
+
+// int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
+// {
+// 	t_field		*tmp;
+
+// 	if (!Program->input->next)
+// 		return (1);
+// 	bf_fieldplus(tetromino, Program->input->content);
+// 	tetromino->h = Program->board->h;
+// 	tetromino->w = Program->board->w;
+// 	while (
+// }
 
 int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
 {
-	t_field		*tmp_fld;
+	t_field		*tmp = NULL;
 
 	if (!Program->input->next)
 		return (1);
-	bf_fieldplus(tetromino, Program->input->content);
+	tetromino = bf_dup(Program->input->content);
 	tetromino->h = Program->board->h;
 	tetromino->w = Program->board->w;
 	while (y <= Program->board->h)
 	{
 		while (x <= Program->board->w)
 		{
-			if (bf_overlap(Program->board, tetromino))
+			if (bf_overlap(&Program->board, &tetromino))
 			{
-				bf_fieldplus(Program->board, tetromino);
+				bf_fieldplus(&Program->board, &tetromino);
 				dl_putlast(&Program->output, tetromino);
 				Program->input = Program->input->next;
-				tmp_fld = Program->input->content;
-				if (solve_map(Program, tetromino, tmp_fld->w, tmp_fld->h))
+				tmp = Program->input->content;
+				if (solve_map(Program, tetromino, tmp->w, tmp->h))
 					return (1);
-				else
-				{
-					bf_fieldminus(Program->board, tetromino);
-					dl_del_last(&Program->output);
-				}
+				bf_fieldminus(&Program->board, &tetromino);
+				dl_del_last(&Program->output);
 			}
-			bf_moveright(tetromino, 1);
+			bf_moveright(&tetromino, 1);
 			x++;
 		}
-		bf_moveleft(tetromino, x);
-		bf_movedown(tetromino);
+		bf_moveleft(&tetromino, x);
+		bf_movedown(&tetromino, 1);
 		x = 0;
 		y++;
 	}
@@ -76,13 +70,13 @@ int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
 void		solver(t_program *Program)
 {
 	t_field		*tmp;
-	t_field		*init_output;
+	t_field		*tetromino;
 
 	tmp = Program->input->content;
-	init_output = bf_dup(Program->board);
-	while ((solve_map(Program, init_output, tmp->w, tmp->h) == 0))
+	tetromino = (t_field *)malloc(sizeof(t_field));
+	while ((solve_map(Program, tetromino, tmp->w, tmp->h) == 0))
 	{
-		bf_clear(Program->board);
+		bf_clear(&Program->board);
 		Program->board->h++;
 		Program->board->w++;
 	}
