@@ -86,7 +86,7 @@ void			render_output(t_program *Program)
 	// // printf("\e[1;34moutput count at exit: %zu\n\e[0m", bcnt);
 	// // printf("\e[1;34m\nboard at exit(size %zu):\n\n\e[0m", Program->board->w);
 	printf("\n");
-	bf_print(&Program->board);  /// TAMA PRINTTAA BOARDIN
+	bf_print(Program->board);  /// TAMA PRINTTAA BOARDIN
 	// printf("\n");
 	// printf("output render: \n\n");
 	// while (i < size)

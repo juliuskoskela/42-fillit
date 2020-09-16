@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:34:55 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/16 16:26:31 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:04:59 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct		s_field
 	uint64_t		*row;
 	size_t			w;
 	size_t			h;
+	size_t			bw;
+	size_t			bh;
 	int				x;
 	int				y;
 }					t_field;

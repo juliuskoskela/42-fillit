@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 15:03:52 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/15 01:34:39 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/16 16:35:15 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		dl_print(t_dlist *node)
 	while (node != NULL)
 	{
 		tmp = node->content;
-		bf_print(&tmp);
+		bf_print(tmp);
 		last = node;
 		node = node->next;
 	}

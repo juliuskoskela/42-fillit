@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 03:58:57 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/15 02:07:58 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/16 16:37:04 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		field_list_print(t_dlist *ref)
 	while (tmp)
 	{
 		field = tmp->content;
-		bf_print(&field);
+		bf_print(field);
 		printf("\nf->h: %zu\n", field->h);
 		printf("\nf->w: %zu\n", field->w);
 		printf("\n");

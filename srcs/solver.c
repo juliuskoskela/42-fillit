@@ -1,54 +1,44 @@
 
 #include "fillit.h"
 
-int			fitblock(t_field **board, t_field **tetromino, size_t x, size_t y)
+int			fitblock(t_field *board, t_field *tetromino)
 {
-	if (!(bf_overlap(board, tetromino)) && y <= (*board)->h)
+	while ((size_t)tetromino->y <= board->h - tetromino->bh)
 	{
-		if (x <= (*board)->w)
+		while ((size_t)tetromino->x <= board->w - tetromino->bw)
 		{
+			if (bf_overlap(board, tetromino))
+				return (1);
 			bf_moveright(tetromino, 1);
-			x++;
+			tetromino->x++;
 		}
-		else
-		{
-			bf_moveleft(tetromino, x);
-			bf_movedown(tetromino, 1);
-			x = 0;
-			y++;
-		}
-		fitblock(board, tetromino, x, y);
+		bf_moveleft(tetromino, tetromino->x);
+		bf_movedown(tetromino, 1);
+		tetromino->y++;
+		tetromino->x = 0;
 	}
-	if (y == (*board)->h)
-		return (0);
-	return (1);
+	return (0);
 }
 
 int				solve_map(t_program *Program)
 {
-	t_field		*tmp;
 	t_field		*tetromino;
-	t_dlist		*last;
+	t_field		*tmp;
 
-	if (!Program->input)
+	if (!Program->input->next)
 		return (1);
 	tmp = Program->input->content;
 	tetromino = bf_new(Program->board->w, Program->board->h);
-	bf_fieldplus(&tetromino, &tmp);
-	if (fitblock(&Program->board, &tetromino, tmp->h, tmp->w))
+	bf_fieldplus(tetromino, Program->input->content);
+	tetromino->bw = tmp->w;
+	tetromino->bh = tmp->h;
+	if (fitblock(Program->board, tetromino))
 	{
-		bf_fieldplus(&Program->board, &tetromino);
+		bf_fieldplus(Program->board, tetromino);
 		dl_putlast(&Program->output, tetromino);
 		Program->input = Program->input->next;
-		solve_map(Program);
-	}
-	else
-	{
-		last = dl_get_last(Program->output);
-		tmp = last->content;
-		bf_fieldminus(&Program->board, &tmp);
-		dl_del_last(&Program->output);
-		dl_rotate(&Program->input, 1);
+		if (solve_map(Program))
+			return (1);
 	}
 	return (0);
 }
@@ -60,10 +50,8 @@ void		solver(t_program *Program)
 	input_head = Program->input;
 	while (!(solve_map(Program)))
 	{
-		bf_clear(&Program->board);
 		Program->input = input_head;
-		Program->board->h++;
-		Program->board->w++;
+		Program->board = bf_new(Program->board->h + 1, Program->board->w + 1);
 	}
 	return render_output(Program);
 }
