@@ -6,12 +6,12 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 23:43:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/16 16:33:11 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/16 23:49:00 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib/bitlib.h"
-#include "libft/libft.h"
+#include "../bitlib/bitlib.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 
 int		main(void)
@@ -28,12 +28,12 @@ int		main(void)
 	f2->row[0] = b("0000");
 	f2->row[1] = b("0000");
 	f2->row[2] = b("0000");
-	f2->row[3] = b("0000");
+	f2->row[3] = b("0100");
 
-	bf_moveright(f1, 1);
-	bf_moveleft(f1, 1);
-	bf_movedown(f1, 2);
-	bf_moveup(f1, 1);
+	// bf_moveright(f1, 1);
+	// bf_moveleft(f1, 1);
+	bf_movedown(f1, 3);
+	// bf_moveup(f1, 1);
 	ret = bf_overlap(f1, f2);
 	printf("\n");
 	ft_putnbr(ret);

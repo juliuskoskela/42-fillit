@@ -79,7 +79,8 @@ void			render_output(t_program *Program)
 	// // printf("\noutput list at exit:\n\n");
 	// while (Program->output->prev)
 	// 	Program->output = Program->output->prev;
-	// field_list_print(Program->output);
+	// Program->output = Program->output->next;
+	field_list_print(Program->output);
 	// bcnt = dl_len(Program->output);
 	// printf("len: %ld\n", bcnt);
 	// // printf("\e\n[1;34mStart board xy: %d\n\n\e[0m", (int)ft_sqrt(Program->block_count * 4) - 1);
