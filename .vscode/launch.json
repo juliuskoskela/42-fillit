@@ -1,28 +1,28 @@
 {
 	"configurations": [
-	// {
-	// 	"name": "(lldb) Launch",
-	// 	"type": "cppdbg",
-	// 	"request": "launch",
-	// 	"program": "${workspaceFolder}/srcs/a.out",
-	// 	"args": [],
-	// 	"stopAtEntry": false,
-	// 	"cwd": "${workspaceFolder}",
-	// 	"environment": [],
-	// 	"externalConsole": false,
-	// 	"MIMode": "lldb"
-	// },
 	{
 		"name": "(lldb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/fillit",
-		"args": ["txt/filetest.txt"],
+		"program": "${workspaceFolder}/a.out",
+		"args": [],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],
 		"externalConsole": false,
 		"MIMode": "lldb"
 	}
+	// {
+	// 	"name": "(lldb) Launch",
+	// 	"type": "cppdbg",
+	// 	"request": "launch",
+	// 	"program": "${workspaceFolder}/fillit",
+	// 	"args": ["txt/filetest.txt"],
+	// 	"stopAtEntry": false,
+	// 	"cwd": "${workspaceFolder}",
+	// 	"environment": [],
+	// 	"externalConsole": false,
+	// 	"MIMode": "lldb"
+	// }
 	]
 }

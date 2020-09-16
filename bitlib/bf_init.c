@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:46:04 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/11 16:07:06 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/16 02:06:27 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ uint64_t			*bf_init(size_t size)
 	i = 0;
 	field = (uint64_t *)malloc(sizeof(uint64_t) * size);
 	while (i < size)
-		field[i++] = 0;
+	{
+		field[i] = 0;
+		i++;
+	}
 	return (field);
 }

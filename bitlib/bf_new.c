@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:26:21 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/09 06:17:08 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/15 19:05:33 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ t_field			*bf_new(size_t w, size_t h)
 	newfield->row = bf_init(h);
 	newfield->w = w;
 	newfield->h = h;
+	newfield->x = 0;
+	newfield->y = 0;
 	return (newfield);
 }

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/15 01:42:23 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/16 16:17:33 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void			bf_print1(uint64_t *field, size_t w, size_t h)
 	}
 }
 
-void			bf_print(t_field **field)
+void			bf_print(t_field *field)
 {
-	if (!(*field))
+	if (!field)
 		return ;
-	bf_print1((*field)->row, (*field)->w, (*field)->h);
+	bf_print1(field->row, field->w, field->h);
 }

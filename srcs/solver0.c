@@ -54,7 +54,7 @@ void		solver(t_program *Program)
 
 	ret = solve_board(Program->board, 0);
 	if (ret)
-			return render_output(Program);
+		return render_output(Program);
 	Program->board->h++;
 	Program->board->w++;
 	solver(Program);
