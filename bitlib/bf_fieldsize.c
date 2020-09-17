@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 17:29:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/15 02:20:21 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/17 17:17:24 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ void	bf_fieldsize(t_field *field)
 	}
 	field->h = y;
 	field->w = x;
+	field->bh = y;
+	field->bw = x;
 }

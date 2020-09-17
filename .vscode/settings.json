@@ -12,7 +12,8 @@
         "unordered_map": "c",
         "utility": "c",
         "vector": "c",
-        "locale": "c"
+        "locale": "c",
+        "bitlib.h": "c"
     },
     "spellright.language": [
         "en"

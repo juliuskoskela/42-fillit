@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 00:39:30 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/16 23:48:37 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/17 16:46:38 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void		bf_moveup(t_field *field, size_t steps)
 		steps--;
 	}
 	field->y -= steps;
+	field->x -= steps;
 }
