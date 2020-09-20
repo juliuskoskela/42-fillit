@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:03:50 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/17 16:46:10 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/20 23:08:47 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		bf_moveleft(t_field *field, size_t steps)
 	i = 0;
 	if (!field || !field->row)
 		return ;
-	while (i < field->w)
+	while (i < field->h)
 	{
 		field->row[i] = field->row[i] >> steps;
 		i++;
