@@ -56,7 +56,7 @@ d:
 	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
 	@echo "Lldb debug folder"
 	@echo "Compilation of $(NAME) successful!"
-	./fillit txt/filetest.txt
+	time ./fillit txt/filetest.txt
 
 $(NAME): $(OBJS)
 	@make -C libft

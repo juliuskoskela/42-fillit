@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/20 19:41:58 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/21 01:10:02 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,13 @@ int		main(int argc, char **argv)
 	Program->steps = 0;
 
 	if (Program->block_count > 26)
-		ERROR("\e[1;35mToo many blocks!\e[0m");
+		ERROR("error\n");
 	if (argc != 2)
-		ERROR("\e[1;35mToo many arguments!\e[0m");
-	printf("\e\n[1;35mYou have %d blocks\n\n\e[0m", (int)Program->block_count);
+		ERROR("FIX!");
 	if (!(val_input(Program->file)))
-		ERROR("\e[1;35minput incorrect!\e[0m");
-	else
-		printf("\e[1;35minput correct!\n\n\e[0m");
+		ERROR("error\n");
 	if (!(val_blocks(Program->input, Program->blocks_ref)))
-		ERROR("\e[1;35minput incorrect!\n\\ne[0m");
-	else
-		printf("\e[1;35mBlocks are valid!\n\e[0m");
-	//field_list_print(Program->input);
+		ERROR("error\n");
 	solver(Program);
 	return (0);
 }
