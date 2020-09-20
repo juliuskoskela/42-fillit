@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 02:08:21 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/17 16:46:24 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/20 18:44:37 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void		bf_movedown_1(t_field *field)
 
 void		bf_movedown(t_field *field, size_t steps)
 {
+	size_t		i;
+
+	i = steps;
 	if (!field || !field->row)
 		return ;
 	while (steps)
@@ -34,5 +37,5 @@ void		bf_movedown(t_field *field, size_t steps)
 		bf_movedown_1(field);
 		steps--;
 	}
-	field->y += steps;
+	field->y += i;
 }
