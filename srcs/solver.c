@@ -23,7 +23,7 @@ int			place(t_field *board, t_field *tetromino, size_t x, size_t y)
 	return (0);
 }
 
-int			solve_board(t_field *board, t_dlist *input)
+int			solve_board(t_field *board, t_dlist *input, t_dlist **output)
 {
 	t_field		*tetromino;
 	t_field		*tmp;
@@ -48,11 +48,13 @@ int			solve_board(t_field *board, t_dlist *input)
 			if (place(board, tetromino, x, y))
 			{
 				bf_fieldplus(board, tetromino);
-				if (solve_board(board, input->next))
+				dl_putlast(output, tetromino);
+				if (solve_board(board, input->next, output))
 					return (1);
 				bf_fieldminus(board, tetromino);
 				bf_moveleft(tetromino, x);
 				bf_moveup(tetromino, y);
+				dl_del_last(output);
 			}
 			x++;
 		}
@@ -66,12 +68,13 @@ void		solver(t_program *Program)
 	t_dlist		*input;
 
 	input = Program->input;
-	while (!(solve_board(Program->board, Program->input)))
+	while (!(solve_board(Program->board, Program->input, &Program->output)))
 	{
 		bf_del(Program->board);
 		Program->input = input;
 		Program->board = bf_new(Program->board->h + 1, Program->board->w + 1);
 	}
 	bf_print(Program->board);
-	// return (render_output(Program));
+
+	return (render_output(Program));
 }
