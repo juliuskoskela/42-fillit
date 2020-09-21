@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/21 01:10:02 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/21 01:48:09 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 	Program->input = read_input(Program->file, Program->one);
 	Program->output = NULL;
 	Program->block_count = dl_len(Program->input);
-	Program->board = bf_new((size_t)ft_sqrt(Program->block_count * 4) - 1, (size_t)ft_sqrt(Program->block_count * 4) - 1);
+	Program->board = bf_new((size_t)ft_sqrt(Program->block_count * 4), (size_t)ft_sqrt(Program->block_count * 4));
 	Program->steps = 0;
 
 	if (Program->block_count > 26)

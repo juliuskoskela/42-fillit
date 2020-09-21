@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/21 01:10:23 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/21 01:50:03 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,16 @@
 
 int			place(t_field *board, t_field *tetromino, size_t x, size_t y)
 {
-	t_field		*tmp;
-
-	tmp = bf_dup(tetromino);
-	bf_moveright(tmp, x);
-	bf_movedown(tmp, y);
-	if (bf_overlap(board, tmp))
-	{
-		bf_del(tmp);
+	bf_moveright(tetromino, x);
+	bf_movedown(tetromino, y);
+	if (bf_overlap(board, tetromino))
 		return (1);
-	}
-	bf_del(tmp);
+	bf_moveleft(tetromino, x);
+	bf_moveup(tetromino, y);
 	return (0);
 }
 
-int			solve_board(t_field *board, t_dlist *input, t_dlist **output)
+int			solve_board(t_field *board, t_dlist *input)
 {
 	t_field		*tetromino;
 	t_field		*tmp;
@@ -61,7 +56,7 @@ int			solve_board(t_field *board, t_dlist *input, t_dlist **output)
 	tetromino->bh = tmp->bh;
 	tetromino->bw = tmp->bw;
 	y = 0;
-	if (tetromino->bh > board->h)
+	if (tetromino->bh > board->h || tetromino->bw > board->w)
 		return (0);
 	while (y <= board->h - tetromino->bh)
 	{
@@ -70,16 +65,12 @@ int			solve_board(t_field *board, t_dlist *input, t_dlist **output)
 		{
 			if (place(board, tetromino, x, y))
 			{
-				bf_moveright(tetromino, x);
-				bf_movedown(tetromino, y);
 				bf_fieldplus(board, tetromino);
-				dl_putlast(output, tetromino);
-				if (solve_board(board, input->next, output))
+				if (solve_board(board, input->next))
 					return (1);
 				bf_fieldminus(board, tetromino);
 				bf_moveleft(tetromino, x);
 				bf_moveup(tetromino, y);
-				dl_del_last(output);
 			}
 			x++;
 		}
@@ -93,11 +84,12 @@ void		solver(t_program *Program)
 	t_dlist		*input;
 
 	input = Program->input;
-	while (!(solve_board(Program->board, Program->input, &Program->output)))
+	while (!(solve_board(Program->board, Program->input)))
 	{
 		bf_del(Program->board);
 		Program->input = input;
 		Program->board = bf_new(Program->board->h + 1, Program->board->w + 1);
 	}
-	return (render_output(Program));
+	bf_print(Program->board);
+	// return (render_output(Program));
 }
