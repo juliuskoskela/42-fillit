@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 01:54:46 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/30 01:57:21 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/15 01:56:37 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int				val_blocks(t_dlist *input, t_dlist *ref)
 		{
 			f2 = pos->content;
 			pos = pos->next;
-			r = bf_cmp(f1, f2);
+			r = bf_cmp(&f1, &f2);
 			if (r == 1)
 				break ;
 		}

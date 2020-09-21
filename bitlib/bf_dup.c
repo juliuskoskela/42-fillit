@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 15:59:20 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/14 16:04:15 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/15 01:08:28 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/21 14:22:39 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bitlib.h"
+#include	"bitlib.h"
 
 t_field		*bf_dup(t_field *src)
 {

@@ -6,7 +6,7 @@
 #    By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 12:48:50 by jkoskela          #+#    #+#              #
-#    Updated: 2020/09/14 16:09:00 by jkoskela         ###   ########.fr        #
+#    Updated: 2020/09/21 14:27:16 by jkoskela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = bf_column.c \
 		bf_moveleft.c \
 		bf_moveright.c \
 		bf_movedown.c \
+		bf_moveup.c \
 		bf_print.c \
 		checkbit.c \
 		highest_one.c \

@@ -48,13 +48,15 @@ endif
 
 re: fclean all
 
-d:
+l:
 	@make -C libft
 	@make -C libdl
 	@make -C bitlib
+d:
 	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
 	@echo "Lldb debug folder"
 	@echo "Compilation of $(NAME) successful!"
+	time ./fillit txt/filetest.txt
 
 $(NAME): $(OBJS)
 	@make -C libft

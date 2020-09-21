@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bf_overlap.c                                       :+:      :+:    :+:   */
+/*   bf_moveup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 05:59:29 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/16 16:27:32 by jkoskela         ###   ########.fr       */
+/*   Created: 2020/09/15 00:39:30 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/20 23:08:54 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bitlib.h"
 
-int			bf_overlap(t_field *board, t_field *field)
+void		bf_moveup_1(t_field *field)
 {
 	size_t		i;
 
 	i = 0;
-	if (!board || !field)
-		return (-1);
-	while (i < board->h)
+	if (!field)
+		return ;
+	while (i < field->h - 1)
 	{
-		if ((board->row[i] & field->row[i]) != 0)
-			return (0);
+		field->row[i] = field->row[i + 1];
+		field->row[i + 1] = 0;
 		i++;
 	}
-	return (1);
+}
+
+void		bf_moveup(t_field *field, size_t steps)
+{
+	while (steps)
+	{
+		bf_moveup_1(field);
+		steps--;
+	}
+	field->y -= steps;
 }

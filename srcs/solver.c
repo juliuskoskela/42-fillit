@@ -1,39 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
+/*   Updated: 2020/09/21 14:25:36 by jkoskela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
-int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
+int			place(t_field *board, t_field *tetromino, size_t x, size_t y)
 {
-	t_field		*tmp_fld;
-
-	if (!Program->input->next)
+	bf_moveright(tetromino, x);
+	bf_movedown(tetromino, y);
+	if (bf_overlap(board, tetromino))
 		return (1);
-	bf_fieldplus(tetromino, Program->input->content);
-	tetromino->h = Program->board->h;
-	tetromino->w = Program->board->w;
-	while (y <= Program->board->h)
+	bf_moveleft(tetromino, x);
+	bf_moveup(tetromino, y);
+	return (0);
+}
+
+int			solve_board(t_field *board, t_dlist *input)
+{
+	t_field		*tetromino;
+	t_field		*tmp;
+	size_t		x;
+	size_t		y;
+
+	if (!input)
+		return (1);
+	tetromino = bf_new(board->w, board->h);
+	tmp = input->content;
+	bf_fieldplus(tetromino, tmp);
+	tetromino->bh = tmp->bh;
+	tetromino->bw = tmp->bw;
+	y = 0;
+	if (tetromino->bh > board->h || tetromino->bw > board->w)
+		return (0);
+	while (y <= board->h - tetromino->bh)
 	{
-		while (x <= Program->board->w)
+		x = 0;
+		while (x <= board->w - tetromino->bw)
 		{
-			if (bf_overlap(Program->board, tetromino))
+			if (place(board, tetromino, x, y))
 			{
-				bf_fieldplus(Program->board, tetromino);
-				dl_putlast(&Program->output, tetromino);
-				Program->input = Program->input->next;
-				tmp_fld = Program->input->content;
-				if (solve_map(Program, tetromino, tmp_fld->w, tmp_fld->h))
+				bf_fieldplus(board, tetromino);
+				if (solve_board(board, input->next))
 					return (1);
-				else
-				{
-					bf_fieldminus(Program->board, tetromino);
-					dl_del_last(&Program->output);
-				}
+				bf_fieldminus(board, tetromino);
+				bf_moveleft(tetromino, x);
+				bf_moveup(tetromino, y);
 			}
-			bf_moveright(tetromino, 1);
 			x++;
 		}
-		bf_moveleft(tetromino, x);
-		bf_movedown(tetromino);
-		x = 0;
 		y++;
 	}
 	return (0);
@@ -41,214 +63,15 @@ int				solve_map(t_program *Program, t_field *tetromino, size_t x, size_t y)
 
 void		solver(t_program *Program)
 {
-	t_field		*tmp;
-	t_field		*init_output;
+	t_dlist		*input;
 
-	tmp = Program->input->content;
-	init_output = bf_dup(Program->board);
-	while ((solve_map(Program, init_output, tmp->w, tmp->h) == 0))
+	input = Program->input;
+	while (!(solve_board(Program->board, Program->input)))
 	{
-		bf_clear(Program->board);
-		Program->board->h++;
-		Program->board->w++;
+		bf_del(Program->board);
+		Program->input = input;
+		Program->board = bf_new(Program->board->h + 1, Program->board->w + 1);
 	}
-	return render_output(Program);
+	bf_print(Program->board);
+	// return (render_output(Program));
 }
-
-// int		solve_board(t_program *Program, size_t i)
-// {
-// 	t_field		*ret;
-// 	t_dlist		*head;
-
-// 	head = Program->input;
-// 	while (Program->input)
-// 	{
-// 		if (ret && i == Program->tetromino_count)
-// 			return (1);
-// 		if ((ret = fittetromino(&Program->board, &Program->input, 0,0)))
-// 		{
-// 			dl_putlast(&Program->output, ret);
-// 			bf_fieldplus(Program->board, ret);
-// 			Program->input = Program->input->next;
-// 			i++;
-// 		}
-// 		else
-// 		{
-// 			head = head->next;
-// 			Program->input = head;
-// 		}
-// 	}
-// 	return (0);
-// }
-
-// void		solver(t_program *Program)
-// {
-// 	int		ret;
-
-// 	ret = solve_board(Program->board, 0);
-// 	if (ret)
-// 			return render_output(Program);
-// 	Program->board->h++;
-// 	Program->board->w++;
-// 	solver(Program);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// void		solver(t_program *Program)
-// {
-// 	t_field		*ret;
-// 	t_dlist		*tmp;
-
-// 	ret = Program->input->content;
-// 	while ((ret = fittetromino(&Program->board, &ret, 0, 0)))
-// 	{
-// 		dl_putlast(&Program->output, ret);
-// 		bf_fieldplus(Program->board, ret);
-// 		Program->input = Program->input->next;
-// 		if (!Program->input->next)
-// 			return render_output(Program);
-// 	}
-// 	if (Program->input->next)
-// 	{
-// 		tmp = Program->output;
-// 		while (tmp->next)
-// 			tmp = tmp->next;
-// 		bf_fieldminus(Program->board, tmp->content);
-// 		dl_del_last(&Program->output);
-// 	}
-// 	else
-// 		Program->board = bf_new(Program->board->w + 1, Program->board->h + 1);
-// 	solver(Program);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// t_field		*fittetromino_list(t_field **board, t_dlist **input)
-// {
-// 	t_field		*ret;
-// 	t_dlist		*tmp;
-
-// 	tmp = *input;
-// 	while (tmp)
-// 	{
-// 		ret = tmp->content;
-// 		if ((ret = fittetromino(board, &ret, 0, 0)) != NULL)
-// 			return (ret);
-// 		tmp = tmp->next;
-// 	}
-// 	return (NULL);
-// }
-
-// void		solver(t_program *Program)
-// {
-// 	t_field		*ret;
-// 	t_dlist		*tmp;
-
-// 	if (Program->steps == Program->tetromino_count)
-// 		return render_output(Program);
-// 	if ((ret = fittetromino_list(&Program->input, &Program->board)))
-// 	{
-// 		dl_putlast(&Program->output, ret);
-// 		bf_fieldplus(Program->board, ret);
-// 		Program->input = Program->input->next;
-// 		Program->steps++;
-// 	}
-// 	else if (Program->steps > 0)
-// 	{
-// 		tmp = Program->output;
-// 		while (tmp->next)
-// 			tmp = tmp->next;
-// 		bf_fieldminus(Program->board, tmp->content);
-// 		dl_del_last(&Program->output);
-// 	}
-// 	else
-// 	{
-// 		Program->board = bf_new(Program->board->w + 1, Program->board->h + 1);
-// 		dl_rotate(&Program->input, 1);
-// 	}
-// 	solver(Program);
-// }
-
-// void		solver(t_program *Program)
-// {
-// 	t_field		*ret;
-
-// 	if (Program->input)
-// 	{
-// 		ret = Program->input->content;
-// 		if ((ret = fittetromino(&Program->board, &ret, 0, 0)))
-// 		{
-// 			dl_putlast(&Program->output, ret);
-// 			bf_fieldplus(Program->board, ret);
-// 			Program->input = Program->input->next;
-// 			if (!Program->input->next)
-// 				return render_output(Program);
-// 		}
-// 	}
-// 	else
-// 		Program->board = bf_new(Program->board->w + 1, Program->board->h + 1);
-// 	solver(Program);
-// }
