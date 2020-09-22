@@ -12,6 +12,11 @@
 
 #include "fillit.h"
 
+//void			flush(t_dlist program)
+//{
+//	dl_del_list(program);
+//}
+
 int			place(t_field *board, t_field *tetromino, size_t x, size_t y)
 {
 	bf_moveright(tetromino, x);
@@ -60,6 +65,7 @@ int			solve_board(t_field *board, t_dlist *input, t_dlist **output)
 		}
 		y++;
 	}
+	free(tetromino);
 	return (0);
 }
 
@@ -75,6 +81,5 @@ void		solver(t_program *Program)
 		Program->board = bf_new(Program->board->h + 1, Program->board->w + 1);
 	}
 	bf_print(Program->board);
-
-	return (render_output(Program));
+///	return (render_output(Program));
 }

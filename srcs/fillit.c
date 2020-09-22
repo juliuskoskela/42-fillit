@@ -34,5 +34,6 @@ int		main(int argc, char **argv)
 	if (!(val_blocks(Program->input, Program->blocks_ref)))
 		ERROR("error\n");
 	solver(Program);
+	system("leaks fillit");
 	return (0);
 }
