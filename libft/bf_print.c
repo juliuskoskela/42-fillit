@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 14:51:08 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/24 01:50:37 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:43:22 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void			bf_print1(uint64_t *field, size_t w, size_t h)
+static void		bf_print1(uint64_t *field, size_t w, size_t h)
 {
 	size_t		i;
 

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 05:55:31 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 01:49:30 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:31:51 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ void		bf_fieldplus(t_field *board, t_field *field)
 		board->row[i] = board->row[i] + field->row[i];
 		i++;
 	}
+	board->bh = field->bh;
+	board->bw = field->bw;
 }

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 15:02:24 by esukava           #+#    #+#             */
-/*   Updated: 2020/09/24 01:49:15 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:42:02 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 uint64_t			bf_column(uint64_t *field, size_t col, size_t size)
 {
 	uint64_t		d;
-	size_t		i;
+	size_t			i;
 
 	i = 0;
 	d = 0;

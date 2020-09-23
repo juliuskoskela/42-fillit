@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 01:52:29 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/04 16:16:14 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:25:48 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		val_line(char *line)
 	return (0);
 }
 
-int			val_input(char *file)
+int				val_input(char *file)
 {
 	char			*line;
 	size_t			r;

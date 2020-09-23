@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:17:47 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/19 21:17:12 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:40:24 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			ft_atoi_base(const char *str, int base)
 {
 	size_t		i;
 	long long	nbr;
-	int		sign;
+	int			sign;
 
 	if (!str || (base < 2 || base > 16))
 		return (0);

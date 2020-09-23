@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:22:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/11 00:15:14 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:38:17 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_dlist			*read_input(char *file, char one)
 	char		*line;
 	t_dlist		*head;
 	t_field		*block;
-	int			r;
 	int			fd;
 	size_t		i;
 
@@ -26,7 +25,7 @@ t_dlist			*read_input(char *file, char one)
 	fd = open(file, O_RDONLY);
 	block = bf_new(4, 4);
 	dl_putfirst(&head, block);
-	while ((r = ft_gnl(fd, &line)) > 0)
+	while ((ft_gnl(fd, &line)) > 0)
 	{
 		if (i == 4)
 		{
