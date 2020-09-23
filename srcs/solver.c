@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/21 14:25:36 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 01:13:55 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,5 @@ void		solver(t_program *Program)
 		Program->input = input;
 		Program->board = bf_new(Program->board->h + 1, Program->board->w + 1);
 	}
-	bf_print(Program->board);
-///	return (render_output(Program));
+	return (render_output(Program));
 }
