@@ -44,14 +44,14 @@ re: fclean all
 l:
 	@make -C libft
 d:
-	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
+	@gcc -g -Wall -Wextra -Werror $(SRCS) $(LIBFT) -o $(NAME)
 	@echo "Lldb debug folder"
 	@echo "Compilation of $(NAME) successful!"
 	time ./fillit txt/filetest.txt
 
 $(NAME): $(OBJS)
 	@make -C libft
-	@gcc -Wall -Wextra -Werror $^ $(LIBFT) $(BITLIB) $(LIBDL) -o $(NAME)
+	@gcc -Wall -Wextra -Werror $^ $(LIBFT) -o $(NAME)
 	@echo "Compilation of $(NAME) successful!"
 
 %.o: %.c
