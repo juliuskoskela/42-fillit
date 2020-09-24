@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 05:26:13 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 05:46:22 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ int			prep_tet(t_field **brd, t_dlist **in, t_dlist **out, t_field **tet)
 	t_dlist		*ref;
 	t_field		*tmp;
 
-	if ((*brd)->h < (*tet)->h || (*brd)->w < (*tet)->w)
-		return (0);
 	*tet = bf_new((*brd)->w, (*brd)->h);
+	tmp = (*in)->content;
+	(*tet)->bw = tmp->w;
+	(*tet)->bh = tmp->h;
+	if ((*brd)->h < tmp->h || (*brd)->w < tmp->w)
+		return (0);
 	bf_fieldplus(*tet, (*in)->content);
 	if (*out)
 	{
@@ -38,8 +41,8 @@ int			prep_tet(t_field **brd, t_dlist **in, t_dlist **out, t_field **tet)
 		while (ref->next)
 			ref = ref->next;
 		tmp = ref->content;
-		// bf_moveright(*tet, tmp->x);
-		// bf_movedown(*tet, tmp->y);
+		bf_moveright(*tet, tmp->x);
+		bf_movedown(*tet, tmp->y);
 	}
 	return (1);
 }

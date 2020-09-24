@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 04:50:02 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 05:49:23 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		main(int argc, char **argv)
 		error("usage: fillit input_file\n");
 	if (!(val_input(argv[1])))
 		error("error\n");
-	// if (!(val_blocks(program->input, program->blocks_ref)))
-	// 	error("error\n");
+	if (!(val_blocks(program->input, program->blocks_ref)))
+		error("error\n");
 	solver(program);
 	return (0);
 }
