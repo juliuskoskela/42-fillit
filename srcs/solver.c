@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/25 01:21:32 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:23:19 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int			solve_board(t_field *brd, t_dlist *in, t_dlist **out, t_field *tet)
 		}
 		y++;
 	}
+	bf_del(tet);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:22:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 17:37:46 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:26:21 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_dlist			*read_input(char *file, char one)
 	while ((ft_gnl(fd, &line)) > 0)
 	{
 		if (!(val_line(line, row)))
-				error("error3\n");
+			error("error3\n");
 		if (i == 4)
 		{
 			i = 0;

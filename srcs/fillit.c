@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/25 01:20:13 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:30:51 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int		main(int argc, char **argv)
 	if (!(val_blocks(program.input, program.blocks_ref)))
 		error("error2\n");
 	solver(&program);
-	// system("leaks fillit");
+	exit(0);
 	return (0);
 }
