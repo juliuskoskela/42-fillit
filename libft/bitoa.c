@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 16:06:14 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 01:50:39 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/25 00:39:08 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		*bitoa(uint64_t nb, size_t len)
 
 	i = 0;
 	str = (char *)malloc(sizeof(char) * len + 1);
-	str[len + 1] = '\0';
+	str[len] = '\0';
 	while (i < len)
 	{
 		if (checkbit(nb, i) == 1)
