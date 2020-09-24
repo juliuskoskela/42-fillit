@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 05:49:23 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:42:53 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 	if (program->block_count > 26)
 		error("error\n");
 	if (argc != 2)
-		error("usage: fillit input_file\n");
+		error("FIX!");
 	if (!(val_input(argv[1])))
 		error("error\n");
 	if (!(val_blocks(program->input, program->blocks_ref)))

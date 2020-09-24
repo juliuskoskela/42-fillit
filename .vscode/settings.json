@@ -14,7 +14,7 @@
         "vector": "c",
         "locale": "c",
         "bitlib.h": "c",
-        "libft.h": "c"
+        "sstream": "c"
     },
     "spellright.language": [
         "en"

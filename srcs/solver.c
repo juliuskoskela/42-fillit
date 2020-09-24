@@ -6,9 +6,11 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 12:54:19 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:09:57 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
 
 #include "fillit.h"
 
@@ -92,8 +94,7 @@ void		solver(t_program *program)
 														tetromino)))
 	{
 		bf_del(program->board);
-		program->input = input;
 		program->board = bf_new(program->board->h + 1, program->board->w + 1);
 	}
-	//return (render_output(program));
+	render_output(program);
 }
