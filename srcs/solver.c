@@ -6,66 +6,87 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 02:34:59 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 05:26:13 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			place(t_field *board, t_field *tetromino, size_t x, size_t y)
+int			place(t_field *brd, t_field *tet, size_t x, size_t y)
 {
-	bf_moveright(tetromino, x);
-	bf_movedown(tetromino, y);
-	if (bf_overlap(board, tetromino))
+	bf_moveright(tet, x);
+	bf_movedown(tet, y);
+	if (bf_overlap(brd, tet))
 		return (1);
-	bf_moveleft(tetromino, x);
-	bf_moveup(tetromino, y);
+	bf_moveleft(tet, x);
+	bf_moveup(tet, y);
 	return (0);
 }
 
-int			solve_board(t_field *board, t_dlist *input, t_dlist **output)
+int			prep_tet(t_field **brd, t_dlist **in, t_dlist **out, t_field **tet)
 {
-	t_field		*tetromino;
+	t_dlist		*ref;
+	t_field		*tmp;
+
+	if ((*brd)->h < (*tet)->h || (*brd)->w < (*tet)->w)
+		return (0);
+	*tet = bf_new((*brd)->w, (*brd)->h);
+	bf_fieldplus(*tet, (*in)->content);
+	if (*out)
+	{
+		ref = *out;
+		while (ref->next)
+			ref = ref->next;
+		tmp = ref->content;
+		// bf_moveright(*tet, tmp->x);
+		// bf_movedown(*tet, tmp->y);
+	}
+	return (1);
+}
+
+int			solve_board(t_field *brd, t_dlist *in, t_dlist **out, t_field *tet)
+{
 	size_t		x;
 	size_t		y;
 
-	if (!input)
+	if (!in)
 		return (1);
-	tetromino = bf_new(board->w, board->h);
-	bf_fieldplus(tetromino, input->content);
-	y = 0;
-	if (tetromino->bh > board->h || tetromino->bw > board->w)
+	if (!(prep_tet(&brd, &in, out, &tet)))
 		return (0);
-	while (y <= board->h - tetromino->bh)
+	y = 0;
+	while (y <= brd->h - tet->bh)
 	{
 		x = 0;
-		while (x <= board->w - tetromino->bw)
+		while (x <= brd->w - tet->bw)
 		{
-			if (place(board, tetromino, x, y))
+			if (place(brd, tet, x, y))
 			{
-				bf_fieldplus(board, tetromino);
-				dl_putlast(output, tetromino);
-				if (solve_board(board, input->next, output))
+				bf_fieldplus(brd, tet);
+				if (solve_board(brd, in->next, out, tet))
+				{
+					dl_putlast(out, tet);
 					return (1);
-				bf_fieldminus(board, tetromino);
-				bf_moveleft(tetromino, x);
-				bf_moveup(tetromino, y);
-				dl_del_last(output);
+				}
+				bf_fieldminus(brd, tet);
+				bf_moveleft(tet, x);
+				bf_moveup(tet, y);
 			}
 			x++;
 		}
 		y++;
 	}
-	free(tetromino);
 	return (0);
 }
 
 void		solver(t_program *program)
 {
 	t_dlist		*input;
+	t_field		*tetromino;
 
 	input = program->input;
-	while (!(solve_board(program->board, program->input, &program->output)))
+	tetromino = program->input->content;
+	while (!(solve_board(program->board, program->input, &program->output,\
+														tetromino)))
 	{
 		bf_del(program->board);
 		program->input = input;

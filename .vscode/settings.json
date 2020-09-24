@@ -13,7 +13,8 @@
         "utility": "c",
         "vector": "c",
         "locale": "c",
-        "bitlib.h": "c"
+        "bitlib.h": "c",
+        "libft.h": "c"
     },
     "spellright.language": [
         "en"

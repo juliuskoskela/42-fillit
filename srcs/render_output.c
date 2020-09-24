@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 14:28:03 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 02:29:43 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 03:57:44 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void			render_output(t_program *program)
 
 	i = 0;
 	size = program->board->h;
-	c = 'A';
+	c = 'A' + program->block_count - 1;
 	array = arr_init(size, '.');
 	while (program->output)
 	{
 		tmp = program->output->content;
 		render(tmp, array, c);
 		program->output = program->output->next;
-		c++;
+		c--;
 	}
 	i = 0;
 	while (i < size)
