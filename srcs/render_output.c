@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 14:28:03 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 16:08:31 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 21:13:23 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,11 @@ void			render_output(t_program *program)
 		ft_putchar('\n');
 		i++;
 	}
+	i = 0;
+	while (i < size)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
