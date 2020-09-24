@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 05:24:38 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 01:59:23 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 14:54:01 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void		dl_del_list(t_dlist **ref)
 {
-	t_dlist		*n;
-	t_field		*tmp;
-	t_dlist		*tmp2;
+	t_field		*del;
+	t_dlist		*pos;
 
-	tmp2 = (*ref);
-	while (tmp2)
+	while (*ref)
 	{
-		tmp = tmp2->content;
-		bf_del(tmp);
-		n = tmp2;
-		tmp2 = tmp2->next;
-		dl_del_node(&n, n);
+		pos = (*ref)->next;
+		del = (*ref)->content;
+		bf_del(del);
+		free(*ref);
+		*ref = pos;
 	}
 }

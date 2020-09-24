@@ -6,15 +6,14 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 01:52:29 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 03:51:47 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 17:14:26 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		val_line(char *line)
+int		val_line(char *line, int row)
 {
-	static int		row;
 	size_t			i;
 	size_t			l;
 
@@ -27,12 +26,12 @@ static int		val_line(char *line)
 			if (++i >= 4)
 			{
 				row++;
-				return (1);
+				return (row);
 			}
 	if (l == 0)
 	{
 		row++;
-		return (1);
+		return (row);
 	}
 	return (0);
 }
@@ -43,12 +42,14 @@ int				val_input(char *file)
 	size_t			r;
 	int				fd;
 	size_t			i;
+	int				row;
 
 	i = 0;
+	line = NULL;
 	fd = open(file, O_RDONLY);
 	while ((r = ft_gnl(fd, &line)) > 0)
 	{
-		if (val_line(line) == 0)
+		if ((row = val_line(line, row)) == 0)
 			return (0);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 14:28:03 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 03:57:44 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/24 16:08:31 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void			render(t_field *field, char **array, char c)
 	char		*tmp;
 
 	i = 0;
+	tmp = NULL;
 	while (i < field->h)
 	{
 		tmp = bitoa(field->row[i], field->w);
