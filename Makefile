@@ -3,7 +3,6 @@ NAME = fillit
 SRCS = srcs/fillit.c \
 		srcs/read_input.c \
 		srcs/val_blocks.c \
-		srcs/val_input.c \
 		srcs/normalize_block.c \
 		srcs/solver.c \
 		srcs/render_output.c \
