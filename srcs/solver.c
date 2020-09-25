@@ -6,11 +6,9 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/25 01:23:19 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/25 13:28:16 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "fillit.h"
 
 #include "fillit.h"
 
@@ -86,11 +84,9 @@ int			solve_board(t_field *brd, t_dlist *in, t_dlist **out, t_field *tet)
 
 void		solver(t_program *program)
 {
-	t_dlist		*input;
 	t_field		*tetromino;
 
-	input = program->input;
-	tetromino = program->input->content;
+	tetromino = NULL;
 	while (!(solve_board(program->board, program->input, &program->output,\
 														tetromino)))
 	{
