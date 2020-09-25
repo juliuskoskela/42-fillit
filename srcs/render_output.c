@@ -67,25 +67,22 @@ void			render_output(t_program *program)
 	t_field		*tmp;
 	char		**array;
 
-	i = 0;
 	ref = program->output;
 	c = 'A' + program->block_count - 1;
 	array = arr_init(program->board->h, '.');
 	while (ref)
 	{
 		tmp = ref->content;
-		render(tmp, array, c);
+		render(tmp, array, c--);
 		bf_del(tmp);
 		ref = ref->next;
-		c--;
 	}
 	i = 0;
 	while (i < program->board->h)
 	{
 		ft_putstr(array[i]);
-		free(array[i]);
+		free(array[i++]);
 		ft_putchar('\n');
-		i++;
 	}
 	dl_del_list(program->output);
 	free(array);
