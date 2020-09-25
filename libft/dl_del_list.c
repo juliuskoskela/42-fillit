@@ -14,7 +14,7 @@
 
 void		dl_del_list(t_dlist *ref)
 {
-	if(ref->next)
+	if (ref->next)
 		dl_del_list(ref->next);
-	free (ref);
+	free(ref);
 }

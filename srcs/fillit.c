@@ -24,11 +24,11 @@ int		main(int argc, char **argv)
 	program.board = bf_new((size_t)ft_sqrt(program.block_count * 4), \
 							(size_t)ft_sqrt(program.block_count * 4));
 	if (program.block_count > 26)
-		error("error1\n");
+		error("error\n");
 	if (argc != 2)
 		error("usage: fillit input_file\n");
 	if (!(val_blocks(program.input, program.blocks_ref)))
-		error("error2\n");
+		error("error\n");
 	solver(&program);
 	exit(0);
 	return (0);

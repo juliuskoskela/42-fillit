@@ -54,7 +54,7 @@ t_dlist			*read_input(char *file, char one)
 	while ((ft_gnl(fd, &line)) > 0)
 	{
 		if (!(val_line(line, row)))
-			error("error3\n");
+			error("error\n");
 		if (i == 4)
 		{
 			i = 0;

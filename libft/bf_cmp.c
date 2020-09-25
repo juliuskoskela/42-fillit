@@ -19,7 +19,7 @@ int				bf_cmp(t_field **f1, t_field **f2)
 	i = 0;
 	if (!(*f1) || !(*f2))
 		return (-1);
-	while (i < (*f2)->h)
+	while (i < 4)
 	{
 		if ((*f1)->row[i] != (*f2)->row[i])
 			return (0);
