@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/25 01:30:51 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/26 16:47:07 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		main(int argc, char **argv)
 	t_program	program;
 
 	program.one = '#';
-	program.blocks_ref = read_input("txt/tetrominoes.txt", program.one);
+	program.blocks_ref = read_input("tetrominoes.txt", program.one);
 	program.input = read_input(argv[1], program.one);
 	program.output = NULL;
 	program.block_count = dl_len(program.input);
