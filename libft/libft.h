@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 23:09:31 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/25 01:07:46 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/27 04:52:35 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct		s_field
 	size_t			h;
 	size_t			bw;
 	size_t			bh;
-	int				x;
-	int				y;
+	size_t			x;
+	size_t			y;
 }					t_field;
 
 typedef struct		s_dlist

@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 02:46:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/25 15:38:59 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/27 03:01:42 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 typedef struct		s_program
 {
-	char			one;
 	t_dlist			*blocks_ref;
 	t_dlist			*input;
 	t_dlist			*output;
 	t_field			*board;
+	t_field			*tet;
 	size_t			block_count;
 }					t_program;
 

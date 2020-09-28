@@ -14,7 +14,9 @@
         "vector": "c",
         "locale": "c",
         "bitlib.h": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "__locale": "c",
+        "ios": "c"
     },
     "spellright.language": [
         "en"

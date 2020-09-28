@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/25 13:28:16 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/27 19:35:06 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			place(t_field *brd, t_field *tet, size_t x, size_t y)
 	return (0);
 }
 
-int			prep_tet(t_field **brd, t_dlist **in, t_dlist **out, t_field **tet)
+int			prep_tet(t_field **brd, t_dlist **in, t_field **tet, t_dlist **out)
 {
 	t_dlist		*ref;
 	t_field		*tmp;
@@ -47,36 +47,37 @@ int			prep_tet(t_field **brd, t_dlist **in, t_dlist **out, t_field **tet)
 	return (1);
 }
 
-int			solve_board(t_field *brd, t_dlist *in, t_dlist **out, t_field *tet)
+void		reset(t_field *board, t_field *tet, size_t x, size_t y)
 {
-	size_t		x;
-	size_t		y;
+	bf_fieldminus(board, tet);
+	bf_moveleft(tet, x);
+	bf_moveup(tet, y);
+}
+
+int			solve_board(t_program *program, t_field *tet, t_dlist *in, int y)
+{
+	int x;
 
 	if (!in)
 		return (1);
-	if (!(prep_tet(&brd, &in, out, &tet)))
+	if (!(prep_tet(&program->board, &in, &tet, &program->output)))
 		return (0);
-	y = 0;
-	while (y <= brd->h - tet->bh)
+	while (y++ < (int)(program->board->h - tet->bh))
 	{
-		x = 0;
-		while (x <= brd->w - tet->bw)
+		x = -1;
+		while (x++ < (int)(program->board->w - tet->bw))
 		{
-			if (place(brd, tet, x, y))
+			if (place(program->board, tet, x, y))
 			{
-				bf_fieldplus(brd, tet);
-				if (solve_board(brd, in->next, out, tet))
+				bf_fieldplus(program->board, tet);
+				if (solve_board(program, tet, in->next, -1))
 				{
-					dl_putlast(out, tet);
+					dl_putlast(&program->output, tet);
 					return (1);
 				}
-				bf_fieldminus(brd, tet);
-				bf_moveleft(tet, x);
-				bf_moveup(tet, y);
+				reset(program->board, tet, x, y);
 			}
-			x++;
 		}
-		y++;
 	}
 	bf_del(tet);
 	return (0);
@@ -84,11 +85,10 @@ int			solve_board(t_field *brd, t_dlist *in, t_dlist **out, t_field *tet)
 
 void		solver(t_program *program)
 {
-	t_field		*tetromino;
+	t_dlist		*ref;
 
-	tetromino = NULL;
-	while (!(solve_board(program->board, program->input, &program->output,\
-														tetromino)))
+	ref = program->input;
+	while (!(solve_board(program, NULL, ref, -1)))
 	{
 		bf_del(program->board);
 		program->board = bf_new(program->board->h + 1, program->board->w + 1);
