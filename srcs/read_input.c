@@ -36,12 +36,20 @@ static int		val_line(char *line, int row)
 	return (0);
 }
 
+t_field			*createblock(t_dlist *head, t_field *block, size_t *i)
+{
+	*i = 0;
+	normalize_block(block);
+	block = bf_new(4, 4);
+	dl_putlast(&head, block);
+	return (block);
+}
+
 t_dlist			*read_input(char *file, char one)
 {
 	char		*line;
 	t_dlist		*head;
 	t_field		*block;
-	int			row;
 	int			fd;
 	size_t		i;
 
@@ -50,23 +58,14 @@ t_dlist			*read_input(char *file, char one)
 	fd = open(file, O_RDONLY);
 	block = bf_new(4, 4);
 	dl_putfirst(&head, block);
-	row = 0;
 	while ((ft_gnl(fd, &line)) > 0)
 	{
-		if (!(val_line(line, row)))
+		if (!(val_line(line, 0)))
 			error("error\n");
 		if (i == 4)
-		{
-			i = 0;
-			normalize_block(block);
-			block = bf_new(4, 4);
-			dl_putlast(&head, block);
-		}
+			block = createblock(head, block, &i);
 		else
-		{
-			block->row[i] = readbits(line, one, block->w);
-			i++;
-		}
+			block->row[i++] = readbits(line, one, block->w);
 		free(line);
 	}
 	normalize_block(block);
