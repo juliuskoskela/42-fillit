@@ -12,58 +12,54 @@
 
 #include "fillit.h"
 
-static int		val_line(char *line, int row)
+static int		val_line(char *line)
 {
-	size_t			i;
-	size_t			l;
+	size_t		i;
 
 	i = 0;
-	l = ft_strlen(line);
-	if (!row)
-		row = 1;
-	if (row % 5 != 0)
-		while (l == 4 && (line[i] == '#' || line[i] == '.'))
-			if (++i >= 4)
-			{
-				row++;
-				return (row);
-			}
-	if (l == 0)
+	if (ft_strlen(line) == 4)
 	{
-		row++;
-		return (row);
+		while (i < 4)
+		{
+			if (line[i] == '#' || line[i] == '.')
+				i++;
+			else
+				return (0);
+		}
 	}
-	return (0);
+	else
+		return (0);
+	return (i);
 }
 
-t_field			*createblock(t_dlist *head, t_field *block, size_t *i)
+static t_field	*createblock(t_dlist *head, t_field *block)
 {
-	*i = 0;
 	normalize_block(block);
 	block = bf_new(4, 4);
 	dl_putlast(&head, block);
 	return (block);
 }
 
-t_dlist			*read_input(char *file, char one)
+t_dlist			*read_input(char *file, char one, size_t i)
 {
 	char		*line;
 	t_dlist		*head;
 	t_field		*block;
 	int			fd;
-	size_t		i;
 
-	i = 0;
 	head = NULL;
 	fd = open(file, O_RDONLY);
 	block = bf_new(4, 4);
 	dl_putfirst(&head, block);
 	while ((ft_gnl(fd, &line)) > 0)
 	{
-		if (!(val_line(line, 0)))
+		if ((i == 4 && line[0] != '\0') || (i != 4 && !(val_line(line))))
 			error("error\n");
 		if (i == 4)
-			block = createblock(head, block, &i);
+		{
+			i = 0;
+			block = createblock(head, block);
+		}
 		else
 			block->row[i++] = readbits(line, one, block->w);
 		free(line);
