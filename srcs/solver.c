@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/27 19:35:06 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/29 04:32:06 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,14 @@ int			place(t_field *brd, t_field *tet, size_t x, size_t y)
 	return (0);
 }
 
-int			prep_tet(t_field **brd, t_dlist **in, t_field **tet, t_dlist **out)
+int			prep_tet(t_field *brd, t_field *tmp, t_field **tet)
 {
-	t_dlist		*ref;
-	t_field		*tmp;
-
-	*tet = bf_new((*brd)->w, (*brd)->h);
-	tmp = (*in)->content;
+	*tet = bf_new(brd->w, brd->h);
 	(*tet)->bw = tmp->w;
 	(*tet)->bh = tmp->h;
-	if ((*brd)->h < tmp->h || (*brd)->w < tmp->w)
+	if (brd->h < tmp->h || brd->w < tmp->w)
 		return (0);
-	bf_fieldplus(*tet, (*in)->content);
-	if (*out)
-	{
-		ref = *out;
-		while (ref->next)
-			ref = ref->next;
-		tmp = ref->content;
-		bf_moveright(*tet, tmp->x);
-		bf_movedown(*tet, tmp->y);
-	}
+	bf_fieldplus(*tet, tmp);
 	return (1);
 }
 
@@ -60,7 +47,7 @@ int			solve_board(t_program *program, t_field *tet, t_dlist *in, int y)
 
 	if (!in)
 		return (1);
-	if (!(prep_tet(&program->board, &in, &tet, &program->output)))
+	if (!(prep_tet(program->board, in->content, &tet)))
 		return (0);
 	while (y++ < (int)(program->board->h - tet->bh))
 	{
@@ -85,13 +72,11 @@ int			solve_board(t_program *program, t_field *tet, t_dlist *in, int y)
 
 void		solver(t_program *program)
 {
-	t_dlist		*ref;
-
-	ref = program->input;
-	while (!(solve_board(program, NULL, ref, -1)))
+	while (!(solve_board(program, NULL, program->input, -1)))
 	{
-		bf_del(program->board);
-		program->board = bf_new(program->board->h + 1, program->board->w + 1);
+		program->board->h++;
+		program->board->w++;
+		bf_clear(program->board);
 	}
 	render_output(program);
 }

@@ -16,7 +16,9 @@
         "bitlib.h": "c",
         "sstream": "c",
         "__locale": "c",
-        "ios": "c"
+        "ios": "c",
+        "__functional_base": "c",
+        "functional": "c"
     },
     "spellright.language": [
         "en"
