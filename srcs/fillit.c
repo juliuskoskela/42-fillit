@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:55:17 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/30 18:36:18 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 19:14:38 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int argc, char **argv)
 	size_t		init_size;
 
 	program.blocks_ref = ref_blocks_list(0);
-	program.input = read_input(argv[1], bf_new(4, 4), '#', 0);
+	program.input = read_input(argv[1], NULL, '#', 0);
 	program.output = NULL;
 	program.tet = NULL;
 	program.block_count = dl_len(program.input);

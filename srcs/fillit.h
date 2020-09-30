@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 02:46:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/30 18:36:59 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 19:11:03 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_program
 	size_t			block_count;
 }					t_program;
 
-t_dlist				*read_input(char *file, t_field *block, char one, size_t i);
+t_dlist				*read_input(char *file, t_dlist *head, char one, size_t i);
 int					val_blocks(t_dlist *input, t_dlist *ref);
 void				normalize_block(t_field *input);
 void				solver(t_program *program);
