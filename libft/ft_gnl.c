@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 00:32:25 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/08/18 19:38:37 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:20:20 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		eof(char **mem, char **line, int r)
 	{
 		*line = ft_strdup(*mem);
 		ft_strdel(&*mem);
-		return (1);
+		return (2);
 	}
 	else
 		return (0);
