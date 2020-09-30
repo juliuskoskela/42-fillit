@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/29 17:16:15 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:02:58 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			place(t_field *brd, t_field *tet, size_t x, size_t y)
+static int			place(t_field *brd, t_field *tet, size_t x, size_t y)
 {
 	bf_moveright(tet, x);
 	bf_movedown(tet, y);
@@ -23,7 +23,7 @@ int			place(t_field *brd, t_field *tet, size_t x, size_t y)
 	return (0);
 }
 
-int			prep_tet(t_field *brd, t_field *tmp, t_field **tet)
+static int			prep_tet(t_field *brd, t_field *tmp, t_field **tet)
 {
 	*tet = bf_new(brd->w, brd->h);
 	(*tet)->bw = tmp->w;
@@ -34,14 +34,14 @@ int			prep_tet(t_field *brd, t_field *tmp, t_field **tet)
 	return (1);
 }
 
-void		reset(t_field *board, t_field *tet, size_t x, size_t y)
+static void		reset(t_field *board, t_field *tet, size_t x, size_t y)
 {
 	bf_fieldminus(board, tet);
 	bf_moveleft(tet, x);
 	bf_moveup(tet, y);
 }
 
-int			solve_board(t_program *program, t_field *tet, t_dlist *in, int y)
+static int			solve_board(t_program *program, t_field *tet, t_dlist *in, int y)
 {
 	int x;
 

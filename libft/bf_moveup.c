@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 00:39:30 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/24 01:50:00 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:00:28 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		bf_moveup_1(t_field *field)
+static void		bf_moveup_1(t_field *field)
 {
 	size_t		i;
 
