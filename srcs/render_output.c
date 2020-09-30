@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 14:28:03 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/30 18:02:32 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:06:06 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void			render(t_field *field, char **array, char c)
+static void		render(t_field *field, char **array, char c)
 {
 	size_t		i;
 	size_t		j;
@@ -35,7 +35,7 @@ static void			render(t_field *field, char **array, char c)
 	}
 }
 
-static char			**arr_init(size_t size, char c)
+static char		**arr_init(size_t size, char c)
 {
 	char		**array;
 	size_t		i;

@@ -6,13 +6,13 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 01:20:16 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/30 18:02:58 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:08:11 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int			place(t_field *brd, t_field *tet, size_t x, size_t y)
+static int		place(t_field *brd, t_field *tet, size_t x, size_t y)
 {
 	bf_moveright(tet, x);
 	bf_movedown(tet, y);
@@ -23,7 +23,7 @@ static int			place(t_field *brd, t_field *tet, size_t x, size_t y)
 	return (0);
 }
 
-static int			prep_tet(t_field *brd, t_field *tmp, t_field **tet)
+static int		prep_tet(t_field *brd, t_field *tmp, t_field **tet)
 {
 	*tet = bf_new(brd->w, brd->h);
 	(*tet)->bw = tmp->w;
@@ -41,28 +41,28 @@ static void		reset(t_field *board, t_field *tet, size_t x, size_t y)
 	bf_moveup(tet, y);
 }
 
-static int			solve_board(t_program *program, t_field *tet, t_dlist *in, int y)
+static int		solve_board(t_program *p, t_field *tet, t_dlist *in, int y)
 {
-	int x;
+	int			x;
 
 	if (!in)
 		return (1);
-	if (!(prep_tet(program->board, in->content, &tet)))
+	if (!(prep_tet(p->board, in->content, &tet)))
 		return (0);
-	while (y++ < (int)(program->board->h - tet->bh))
+	while (y++ < (int)(p->board->h - tet->bh))
 	{
 		x = -1;
-		while (x++ < (int)(program->board->w - tet->bw))
+		while (x++ < (int)(p->board->w - tet->bw))
 		{
-			if (place(program->board, tet, x, y))
+			if (place(p->board, tet, x, y))
 			{
-				bf_fieldplus(program->board, tet);
-				if (solve_board(program, tet, in->next, -1))
+				bf_fieldplus(p->board, tet);
+				if (solve_board(p, tet, in->next, -1))
 				{
-					dl_putlast(&program->output, tet);
+					dl_putlast(&p->output, tet);
 					return (1);
 				}
-				reset(program->board, tet, x, y);
+				reset(p->board, tet, x, y);
 			}
 		}
 	}
@@ -70,7 +70,7 @@ static int			solve_board(t_program *program, t_field *tet, t_dlist *in, int y)
 	return (0);
 }
 
-void		solver(t_program *program)
+void			solver(t_program *program)
 {
 	while (!(solve_board(program, NULL, program->input, -1)))
 	{

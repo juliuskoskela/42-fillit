@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:22:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/30 17:39:49 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:07:12 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ t_dlist			*read_input(char *file, char one, size_t i)
 			error("error\n");
 		if (i == 4)
 		{
-			if (line[0] != '\0')
-				error("error\n");
 			i = 0;
 			block = createblock(head, block);
 		}
