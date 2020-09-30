@@ -6,7 +6,7 @@
 /*   By: jkoskela <jkoskela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:22:22 by jkoskela          #+#    #+#             */
-/*   Updated: 2020/09/30 18:24:49 by jkoskela         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:37:13 by jkoskela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,20 @@ static t_field	*createblock(t_dlist *head, t_field *block)
 	return (block);
 }
 
-t_dlist			*read_input(char *file, char *line, char one, size_t i)
+t_dlist			*read_input(char *file, t_field *block, char one, size_t i)
 {
 	t_dlist		*head;
-	t_field		*block;
+	char		*line;
 	int			fd;
 	int			r;
 
 	head = NULL;
 	fd = open(file, O_RDONLY);
-	block = bf_new(4, 4);
 	dl_putfirst(&head, block);
 	while ((r = ft_gnl(fd, &line)) > 0)
 	{
-		if (r == 2 && line[0] != '\0')
-			error("error\n");
-		if ((i == 4 && line[0] != '\0') || (i != 4 && !(val_line(line))))
+		if ((r == 2 && line[0] != '\0') || (i == 4 && line[0] != '\0') \
+									|| (i != 4 && !(val_line(line))))
 			error("error\n");
 		if (i == 4)
 		{
