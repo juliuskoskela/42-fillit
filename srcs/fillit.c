@@ -17,8 +17,15 @@ int		main(int argc, char **argv)
 	t_program	program;
 	size_t		init_size;
 
-	program.blocks_ref = read_input("tetrominoes.txt", '#');
-	program.input = read_input(argv[1], '#');
+	program.blocks_ref =  ref_blocks_list();
+	program.input = read_input(argv[1], '#', 0);
+	// printf("ref_blocks = \n\n");
+	// dl_print(program.blocks_ref);
+	// printf("\ninput = \n\n");
+	// dl_print(program.input);
+	// return(0);
+
+
 	program.output = NULL;
 	program.tet = NULL;
 	program.block_count = dl_len(program.input);

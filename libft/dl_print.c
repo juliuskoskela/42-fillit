@@ -21,6 +21,7 @@ void		dl_print(t_dlist *node)
 	{
 		tmp = node->content;
 		bf_print(tmp);
+		write(1, "\n", 1);
 		last = node;
 		node = node->next;
 	}

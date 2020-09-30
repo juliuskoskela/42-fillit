@@ -18,7 +18,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/fillit",
-		"args": ["filetest.txt"],
+		"args": ["success_03_6_pieces_rand.txt"],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],

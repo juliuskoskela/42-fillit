@@ -24,10 +24,11 @@ typedef struct		s_program
 	size_t			block_count;
 }					t_program;
 
-t_dlist				*read_input(char *file, char one);
+t_dlist				*read_input(char *file, char one, size_t i);
 int					val_blocks(t_dlist *input, t_dlist *ref);
 void				normalize_block(t_field *input);
 void				solver(t_program *program);
 void				render_output(t_program *program);
+t_dlist				*ref_blocks_list();
 
 #endif

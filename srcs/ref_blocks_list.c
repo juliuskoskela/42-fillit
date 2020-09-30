@@ -31,7 +31,7 @@ t_dlist		*ref_blocks_list()
 	uint64_t	*i;
 	size_t		j = 0;
 
-	i = (uint64_t *)malloc(sizeof(uint64_t));
+	i = (uint64_t *)malloc(sizeof(uint64_t) * 19);
 
 	i[0] = 0b1000100010001000;
 	i[1] = 0b1111000000000000;
