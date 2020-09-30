@@ -12,23 +12,8 @@
 
 #include "fillit.h"
 
-static t_field		*itofield(uint64_t nb, t_field *field)
+static uint64_t	list(uint64_t *i, size_t j)
 {
-	field->row[0] = nb & 0b1111;
-	field->row[1] = (nb >> 4) & 0b1111;
-	field->row[2] = (nb >> 8) & 0b1111;
-	field->row[3] = (nb >> 12) & 0b1111;
-	return (field);
-}
-
-t_dlist		*ref_blocks_list(size_t j)
-{
-	t_dlist		*ref_blocks;
-	t_field		*field;
-	uint64_t	*i;
-	ref_blocks = NULL;
-	i = (uint64_t *)malloc(sizeof(uint64_t) * 19);
-
 	i[0] = 0b0001000100010001;
 	i[1] = 0b0000000000001111;
 	i[2] = 0b0000000000110011;
@@ -48,14 +33,34 @@ t_dlist		*ref_blocks_list(size_t j)
 	i[16] = 0b0000000100110010;
 	i[17] = 0b0000000000110110;
 	i[18] = 0b0000001000110001;
+	return (i[j]);
+}
 
+static t_field	*itofield(uint64_t nb, t_field *field)
+{
+	field->row[0] = nb & 0b1111;
+	field->row[1] = (nb >> 4) & 0b1111;
+	field->row[2] = (nb >> 8) & 0b1111;
+	field->row[3] = (nb >> 12) & 0b1111;
+	return (field);
+}
+
+t_dlist			*ref_blocks_list(size_t j)
+{
+	t_dlist		*ref_blocks;
+	t_field		*field;
+	uint64_t	*i;
+
+	ref_blocks = NULL;
+	i = (uint64_t *)malloc(sizeof(uint64_t) * 19);
 	while (j < 19)
 	{
+		i[j] = list(i, j);
 		field = bf_new(4, 4);
 		itofield(i[j], field);
 		dl_putlast(&ref_blocks, field);
 		j++;
 	}
 	free(i);
-	return(ref_blocks);
+	return (ref_blocks);
 }
